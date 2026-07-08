@@ -132,26 +132,74 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .logo-icon .leaf-icon {
+      font-size: 2.2rem;
+      color: var(--green-dark);
+      margin-bottom: -4px;
+    }
+
+    .logo-icon .brand-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--green-dark);
+      letter-spacing: 1px;
     }
 
-    .logo i {
-      color: var(--gold);
-      font-size: 1.6rem;
-    }
-
-    .logo span {
-      font-size: 0.7rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      letter-spacing: 1.5px;
+    .logo-icon .brand-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
       color: var(--warm-gray);
-      display: block;
-      margin-top: -4px;
+      text-transform: uppercase;
+      margin-top: -2px;
+    }
+
+    .logo-divider {
+      width: 2px;
+      height: 40px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text .top {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.1;
+    }
+
+    .logo-text .top i {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-right: 4px;
+    }
+
+    .logo-text .bottom {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      color: var(--warm-gray);
+      text-transform: uppercase;
+      margin-top: -2px;
     }
 
     .nav-links {
@@ -431,7 +479,7 @@
       font-weight: 400;
     }
 
-    /* ─── PRODUCT SLIDER ─── */
+    /* ─── PRODUCT SLIDER (2 cards, Flipkart/Amazon style) ─── */
     .slider-wrapper {
       position: relative;
       width: 100%;
@@ -451,77 +499,72 @@
     .slide-card {
       flex: 0 0 100%;
       background: #ffffff;
-      padding: 32px 20px 28px;
+      padding: 24px 18px 24px;
       text-align: center;
       border-radius: var(--radius);
       min-height: 420px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      position: relative;
     }
 
-    .slide-card .product-icon {
-      font-size: 3.8rem;
-      color: var(--green-accent);
-      background: var(--cream);
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
+    /* product image area - Flipkart style */
+    .slide-card .product-image {
+      width: 100%;
+      max-width: 200px;
+      height: 200px;
+      margin: 0 auto 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 12px;
+      background: #faf8f4;
+      border-radius: 16px;
+      padding: 12px;
+      overflow: hidden;
     }
 
-    .slide-card h3 {
+    .slide-card .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .slide-card .product-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--green-dark);
       margin-bottom: 2px;
+      font-weight: 700;
     }
 
-    .slide-card .weight {
-      font-size: 0.9rem;
+    .slide-card .product-sub {
+      font-size: 0.8rem;
       color: var(--warm-gray);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
+      font-weight: 400;
     }
 
-    .slide-card .ingredients-pills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 10px 0 14px;
-    }
-
-    .slide-card .ingredients-pills span {
-      background: var(--cream);
-      padding: 4px 14px;
-      border-radius: 60px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--green-dark);
-    }
-
-    .slide-card .badge-100 {
+    .slide-card .product-badge {
       display: inline-block;
       background: var(--green-dark);
       color: #fff;
-      padding: 4px 16px;
+      padding: 3px 14px;
       border-radius: 60px;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 1px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .slide-card .price-tag {
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--green-dark);
-      margin: 6px 0 12px;
+      margin: 4px 0 8px;
     }
 
     .slide-card .price-tag small {
@@ -535,8 +578,31 @@
       font-size: 0.95rem;
       width: 100%;
       justify-content: center;
+      margin-top: 4px;
     }
 
+    .slide-card .btn-primary i {
+      margin-right: 4px;
+    }
+
+    /* Flipkart-style rating / extra */
+    .slide-card .card-footer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+
+    .slide-card .card-footer span i {
+      color: var(--gold);
+      margin-right: 4px;
+    }
+
+    /* slider dots */
     .slider-dots {
       display: flex;
       justify-content: center;
@@ -699,9 +765,23 @@
       box-shadow: var(--shadow);
     }
 
-    .ingredient-item .emoji {
+    .ingredient-item .ing-icon {
       font-size: 2.8rem;
       margin-bottom: 8px;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .ingredient-item .ing-icon img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      background: var(--cream);
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .ingredient-item h5 {
@@ -866,7 +946,7 @@
 
     .modal {
       background: #fff;
-      max-width: 500px;
+      max-width: 520px;
       width: 94%;
       padding: 40px 32px 36px;
       border-radius: 24px;
@@ -947,6 +1027,12 @@
       min-height: 70px;
     }
 
+    .modal .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
     .modal .btn-buy {
       width: 100%;
       padding: 16px;
@@ -986,14 +1072,15 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
-      gap: 24px;
+      align-items: flex-start;
+      gap: 32px;
     }
 
     .footer .brand {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
       font-weight: 700;
@@ -1002,6 +1089,8 @@
 
     .footer .brand i {
       color: var(--gold);
+      font-size: 1.6rem;
+      margin-right: 6px;
     }
 
     .footer .brand span {
@@ -1012,6 +1101,29 @@
       color: rgba(255, 255, 255, 0.5);
       display: block;
       margin-top: -4px;
+    }
+
+    .footer .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer .contact-info a {
+      color: rgba(255, 255, 255, 0.8);
+      transition: var(--transition);
+    }
+
+    .footer .contact-info a:hover {
+      color: #fff;
+    }
+
+    .footer .contact-info i {
+      width: 20px;
+      color: var(--gold);
+      margin-right: 6px;
     }
 
     .footer .links {
@@ -1034,7 +1146,7 @@
       opacity: 0.6;
       width: 100%;
       text-align: center;
-      margin-top: 16px;
+      margin-top: 24px;
       padding-top: 16px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -1097,6 +1209,23 @@
         right: -10px;
         min-width: 150px;
       }
+      .modal .form-row {
+        grid-template-columns: 1fr;
+      }
+      .footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer .brand {
+        align-items: center;
+      }
+      .footer .contact-info {
+        align-items: center;
+      }
+      .footer .links {
+        justify-content: center;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1135,11 +1264,17 @@
   <header class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="logo">
-        <i class="fas fa-seedling"></i>
-        <div>
-          Greenhouse
-          <span>AYURVEDIC COMPANY</span>
+        <div class="logo-icon">
+<div class="logo">
+    <img src="logo.png" alt="The Greenhouse Logo">
+</div>          <span class="brand-name">The Greenhouse</span>
+          <span class="brand-sub">AYURVEDIC COMPANY</span>
         </div>
+       <!--  <div class="logo-divider"></div>
+        <div class="logo-text">
+          <span class="top"><i class="fas fa-leaf"></i>Weight Loss</span>
+          <span class="bottom">Powder</span>
+        </div> -->
       </a>
 
       <ul class="nav-links" id="navLinks">
@@ -1208,82 +1343,49 @@
         </div>
       </div>
 
-      <!-- ═══ PRODUCT SLIDER ═══ -->
+      <!-- ═══ PRODUCT SLIDER (2 cards with new images) ═══ -->
       <div class="hero-visual">
         <div class="slider-wrapper" id="sliderWrapper">
           <div class="slider-track" id="sliderTrack">
-            <!-- Slide 1 -->
-            <div class="slide-card">
-              <div class="product-icon">
-                <i class="fas fa-mortar-pestle"></i>
-              </div>
-              <h3 data-i18n="productName">Weight Loss Powder</h3>
-              <div class="weight" data-i18n="netWeight">Net Weight: 200g</div>
-              <div class="ingredients-pills">
-                <span>Methi</span>
-                <span>Jeera</span>
-                <span>Ajwain</span>
-                <span>Saunf</span>
-                <span>Dalchini</span>
-              </div>
-              <div class="badge-100" data-i18n="naturalBadge">100% NATURAL</div>
-              <div class="price-tag">
-                ₹499 <small data-i18n="perPack">/ pack</small>
-              </div>
-              <button class="btn-primary" onclick="document.getElementById('orderNowBtn').click();">
-                <i class="fas fa-shopping-cart"></i> <span data-i18n="addToCart">Add to Cart</span>
-              </button>
-            </div>
-            <!-- Slide 2 -->
+            <!-- Slide 1 - New Image 1 -->
             <div class="slide-card" style="background: #faf8f4;">
-              <div class="product-icon" style="background: #e8f0ea;">
-                <i class="fas fa-leaf"></i>
+              <div class="product-image">
+                <img src="product1.jpg" alt="Greenhouse Weight Loss Powder" />
               </div>
-              <h3 data-i18n="productName2">Ayurvedic Blend</h3>
-              <div class="weight" data-i18n="blendWeight">5 potent herbs</div>
-              <div class="ingredients-pills">
-                <span>Methi</span>
-                <span>Jeera</span>
-                <span>Ajwain</span>
-                <span>Saunf</span>
-                <span>Dalchini</span>
-              </div>
-              <div class="badge-100" data-i18n="pureBadge">100% PURE</div>
-              <div class="price-tag">
-                ₹499 <small data-i18n="perPack">/ pack</small>
-              </div>
+              <div class="product-title">Weight Loss Powder</div>
+              <div class="product-sub">Natural Ayurvedic Wellness Formula</div>
+              <div class="product-badge">100% NATURAL</div>
+              <div class="price-tag">₹699 <small>/ pack</small></div>
               <button class="btn-primary" onclick="document.getElementById('orderNowBtn').click();">
-                <i class="fas fa-shopping-cart"></i> <span data-i18n="addToCart">Add to Cart</span>
+                <i class="fas fa-shopping-cart"></i> Add to Cart
               </button>
+              <div class="card-footer">
+                <span><i class="fas fa-star"></i> 4.8 (2.3k)</span>
+                <span><i class="fas fa-shield-alt"></i> Pure & Safe</span>
+              </div>
             </div>
-            <!-- Slide 3 -->
-            <div class="slide-card" style="background: #f5f2ec;">
-              <div class="product-icon" style="background: #dfe9e0;">
-                <i class="fas fa-seedling"></i>
+            <!-- Slide 2 - New Image 2 -->
+            <div class="slide-card" style="background: #faf8f4;">
+              <div class="product-image">
+                <img src="product2.jpg" alt="Ayurvedic Blend" />
               </div>
-              <h3 data-i18n="productName3">Wellness Formula</h3>
-              <div class="weight" data-i18n="formulaWeight">Supports metabolism</div>
-              <div class="ingredients-pills">
-                <span>Methi</span>
-                <span>Jeera</span>
-                <span>Ajwain</span>
-                <span>Saunf</span>
-                <span>Dalchini</span>
-              </div>
-              <div class="badge-100" data-i18n="noPreservatives">NO PRESERVATIVES</div>
-              <div class="price-tag">
-                ₹499 <small data-i18n="perPack">/ pack</small>
-              </div>
+              <div class="product-title">Ayurvedic Blend</div>
+              <div class="product-sub">5 Potent Herbs</div>
+              <div class="product-badge">100% PURE</div>
+              <div class="price-tag">₹699 <small>/ pack</small></div>
               <button class="btn-primary" onclick="document.getElementById('orderNowBtn').click();">
-                <i class="fas fa-shopping-cart"></i> <span data-i18n="addToCart">Add to Cart</span>
+                <i class="fas fa-shopping-cart"></i> Add to Cart
               </button>
+              <div class="card-footer">
+                <span><i class="fas fa-star"></i> 4.9 (1.8k)</span>
+                <span><i class="fas fa-leaf"></i> No Preservatives</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="slider-dots" id="sliderDots">
           <button class="dot active" data-index="0" aria-label="Slide 1"></button>
           <button class="dot" data-index="1" aria-label="Slide 2"></button>
-          <button class="dot" data-index="2" aria-label="Slide 3"></button>
         </div>
 
         <div class="floating-leaf"><i class="fas fa-leaf"></i></div>
@@ -1341,31 +1443,31 @@
       </div>
       <div class="ingredients-grid">
         <div class="ingredient-item">
-          <div class="emoji">🌿</div>
+          <span class="ing-icon"><img src="https://tse1.mm.bing.net/th/id/OIP.hKFHSRouiTGQ4feYLTH1PgHaDz?r=0&pid=Api&P=0&h=180" alt="Methi"></span>
           <h5>Methi</h5>
           <div class="ing-sub" data-i18n="fenugreek">Fenugreek</div>
           <p data-i18n="methiDesc">Supports metabolism &amp; helps curb appetite</p>
         </div>
         <div class="ingredient-item">
-          <div class="emoji">🧄</div>
+          <span class="ing-icon"><img src="https://tse2.mm.bing.net/th/id/OIP.XAinmUD2TeiBx6DBHcoQwwHaFM?r=0&pid=Api&P=0&h=180" alt="Jeera" /></span>
           <h5>Jeera</h5>
           <div class="ing-sub" data-i18n="cumin">Cumin Seeds</div>
           <p data-i18n="jeeraDesc">Improves digestion &amp; reduces bloating</p>
         </div>
         <div class="ingredient-item">
-          <div class="emoji">🌾</div>
+          <span class="ing-icon"><img src="https://tse2.mm.bing.net/th/id/OIP.7wgsS4kTJ-d_IEaXRFDMqAHaFP?r=0&pid=Api&P=0&h=180" alt="Ajwain" /></span>
           <h5>Ajwain</h5>
           <div class="ing-sub" data-i18n="carom">Carom Seeds</div>
           <p data-i18n="ajwainDesc">Relieves gas &amp; supports digestion</p>
         </div>
         <div class="ingredient-item">
-          <div class="emoji">🌸</div>
+          <span class="ing-icon"><img src="https://tse2.mm.bing.net/th/id/OIP.7FM6Zm0P9PJ31bdGWk06CQHaHa?r=0&pid=Api&P=0&h=180" alt="Saunf" /></span>
           <h5>Saunf</h5>
           <div class="ing-sub" data-i18n="fennel">Fennel Seeds</div>
           <p data-i18n="saunfDesc">Helps reduce water retention</p>
         </div>
         <div class="ingredient-item">
-          <div class="emoji">🪵</div>
+          <span class="ing-icon"><img src="https://tse4.mm.bing.net/th/id/OIP.TDivKGYK7hIqBZygUFTUdQHaHa?r=0&pid=Api&P=0&h=180" alt="Dalchini" /></span>
           <h5>Dalchini</h5>
           <div class="ing-sub" data-i18n="cinnamon">Cinnamon</div>
           <p data-i18n="dalchiniDesc">Boosts metabolism &amp; helps manage weight</p>
@@ -1435,7 +1537,7 @@
         lifestyle with Greenhouse.
       </p>
       <button class="btn-primary" id="ctaOrderBtn" style="font-size:1.1rem; padding:18px 52px;">
-        <i class="fas fa-shopping-bag"></i> <span data-i18n="ctaBtn">Order Now — ₹499</span>
+        <i class="fas fa-shopping-bag"></i> <span data-i18n="ctaBtn">Order Now — ₹699</span>
       </button>
       <p style="margin-top:16px; font-size:0.85rem; opacity:0.6;">
         <i class="fas fa-truck"></i> <span data-i18n="freeShipping">Free shipping on orders above ₹999</span>
@@ -1462,6 +1564,16 @@
           <label for="address" data-i18n="addressLabel">Delivery Address</label>
           <textarea id="address" placeholder="Street, city, pincode" required></textarea>
         </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="age" data-i18n="ageLabel">Age (years)</label>
+            <input type="number" id="age" placeholder="e.g. 30" min="10" max="100" required />
+          </div>
+          <div class="form-group">
+            <label for="weight" data-i18n="weightLabel">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g. 75" min="20" max="300" required />
+          </div>
+        </div>
         <div class="form-group">
           <label for="quantity" data-i18n="qtyLabel">Quantity (packs)</label>
           <input type="number" id="quantity" value="1" min="1" max="20" required />
@@ -1473,28 +1585,35 @@
     </div>
   </div>
 
-  <!-- ═══════════ FOOTER ═══════════ -->
+  <!-- ═══════════ FOOTER (with Mobile & Email) ═══════════ -->
   <footer class="footer">
     <div class="container">
       <div class="brand">
-        <i class="fas fa-seedling"></i>
         <div>
-          Greenhouse
+          <i class="fas fa-seedling"></i> The Greenhouse
           <span>AYURVEDIC COMPANY</span>
         </div>
+        <div style="font-size:0.85rem; font-weight:400; margin-top:4px; color:rgba(255,255,255,0.6);">
+          Bringing Ayurveda Back to Life
+        </div>
       </div>
+
+      <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> <a href="tel:+919327573959">+91 93275 73959</a></span>
+        <span><i class="fas fa-envelope"></i> <a href="mailto:info@greenhouseayurveda.com">thegreenhouseayurvedic@gmail.com</a></span>
+<!--         <span style="font-size:0.8rem; opacity:0.6; margin-top:4px;">Mon–Sat, 10:00 AM – 7:00 PM</span>
+ -->      </div>
+
       <div class="links">
-        <a href="#hero" data-i18n="home">Home</a>
-        <a href="#benefits" data-i18n="benefits">Benefits</a>
-        <a href="#ingredients" data-i18n="ingredients">Ingredients</a>
-        <a href="#howto" data-i18n="howto">How to Use</a>
-        <a href="#cta" data-i18n="shop">Shop</a>
+        <a href="#hero">Home</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#ingredients">Ingredients</a>
+        <a href="#howto">How to Use</a>
+        <a href="#cta">Shop</a>
       </div>
+
       <div class="copy">
         &copy; 2026 Greenhouse Ayurvedic Company. All rights reserved.
-        <span style="display:block; font-size:0.75rem; opacity:0.5; margin-top:4px;" data-i18n="taglineFooter">
-          Bringing Ayurveda Back to Life
-        </span>
       </div>
     </div>
   </footer>
@@ -1527,7 +1646,7 @@
       }
     });
 
-    // ─── PRODUCT SLIDER ───
+    // ─── PRODUCT SLIDER (2 cards) ───
     const track = document.getElementById('sliderTrack');
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
@@ -1607,10 +1726,8 @@
       if (e.target === modal) closeModal();
     });
 
-    // ─── FORM SUBMIT → WhatsApp (AUTO) with FIX ───
-    // IMPORTANT: Replace with your actual WhatsApp number (with country code, no + sign)
-    // Example: for India use '91xxxxxxxxxx'
-    const WHATSAPP_NUMBER = '918200734207'; // TEMPORARY - replace with your actual number
+    // ─── FORM SUBMIT → WhatsApp ───
+    const WHATSAPP_NUMBER = '9327573959';
 
     orderForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -1618,68 +1735,57 @@
       const name = document.getElementById('username').value.trim();
       const mobile = document.getElementById('mobile').value.trim();
       const address = document.getElementById('address').value.trim();
+      const age = document.getElementById('age').value.trim();
+      const weight = document.getElementById('weight').value.trim();
       const quantity = document.getElementById('quantity').value.trim() || '1';
 
-      if (!name || !mobile || !address) {
+      if (!name || !mobile || !address || !age || !weight) {
         alert('Please fill in all required fields.');
         return;
       }
 
-      // Clean the WhatsApp number: remove any non-digit characters
       let cleanNumber = WHATSAPP_NUMBER.replace(/\D/g, '');
-
-      // Ensure the number starts with a country code (if not, add default '91' for India)
-      // If the number is less than 10 digits, it's likely missing country code
       if (cleanNumber.length < 10) {
-        // If it's a 10-digit Indian number, prepend '91'
         if (cleanNumber.length === 10) {
           cleanNumber = '91' + cleanNumber;
         } else {
-          // If it's still too short, alert the user
           alert('Please set a valid WhatsApp number in the code (with country code).');
           return;
         }
       }
-
-      // If number starts with '0', remove it (common in Indian numbers)
       if (cleanNumber.startsWith('0')) {
         cleanNumber = cleanNumber.substring(1);
       }
 
-      // If number starts with '+', remove it (we only want digits)
-      // (already removed by \D)
-
-      // Build the message
       const productName = 'Greenhouse Weight Loss Powder';
-      const pricePerPack = 499;
+      const pricePerPack = 699;
       const total = pricePerPack * parseInt(quantity);
 
-      const message = `🛍️ *New Order from Greenhouse*%0A%0A` +
-        `👤 *Name:* ${name}%0A` +
-        `📱 *Mobile:* ${mobile}%0A` +
-        `📍 *Address:* ${address}%0A` +
-        `📦 *Product:* ${productName}%0A` +
-        `🔢 *Quantity:* ${quantity} pack(s)%0A` +
-        `💰 *Total:* ₹${total} (₹${pricePerPack}/pack)%0A%0A` +
-        `✅ *Order placed via website*`;
+     // Build message with Unicode emojis (WhatsApp will render them correctly)
+const message = 
+  '🛍️ *New Order from Greenhouse*%0A%0A' +
+  '👤 *Name:* ' + encodeURIComponent(name) + '%0A' +
+  '📱 *Mobile:* ' + encodeURIComponent(mobile) + '%0A' +
+  '📍 *Address:* ' + encodeURIComponent(address) + '%0A' +
+  '🎂 *Age:* ' + encodeURIComponent(age) + ' years%0A' +
+  '⚖️ *Weight:* ' + encodeURIComponent(weight) + ' kg%0A' +
+  '📦 *Product:* ' + encodeURIComponent(productName) + '%0A' +
+  '🔢 *Quantity:* ' + encodeURIComponent(quantity) + ' pack(s)%0A' +
+  '💰 *Total:* ₹' + encodeURIComponent(total) + ' (₹' + encodeURIComponent(pricePerPack) + '/pack)%0A%0A' +
+  '✅ *Order placed via website*';
 
-      // Create the WhatsApp URL with the cleaned number
-      const url = `https://wa.me/${cleanNumber}?text=${message}`;
-
-      // Open WhatsApp in new tab
+const url = `https://wa.me/${cleanNumber}?text=${message}`;
       window.open(url, '_blank');
-
-      // Close modal after a moment
       setTimeout(closeModal, 800);
     });
 
-    // ─── LANGUAGE SWITCHER ───
+    // ─── LANGUAGE SWITCHER (simplified) ───
     const langToggle = document.getElementById('langToggle');
     const langMenu = document.getElementById('langMenu');
     const langButtons = langMenu.querySelectorAll('button');
     const currentLangLabel = document.getElementById('currentLangLabel');
 
-    // Translation dictionary (same as before)
+    // Minimal translations for demo
     const translations = {
       en: {
         benefits: 'Benefits',
@@ -1697,17 +1803,6 @@
         stat1: 'Potent Herbs',
         stat2: 'Net Weight',
         stat3: 'Natural',
-        productName: 'Weight Loss Powder',
-        netWeight: 'Net Weight: 200g',
-        naturalBadge: '100% NATURAL',
-        perPack: '/ pack',
-        addToCart: 'Add to Cart',
-        productName2: 'Ayurvedic Blend',
-        blendWeight: '5 potent herbs',
-        pureBadge: '100% PURE',
-        productName3: 'Wellness Formula',
-        formulaWeight: 'Supports metabolism',
-        noPreservatives: 'NO PRESERVATIVES',
         benefitsLabel: 'Why Choose Greenhouse',
         benefitsTitle: 'Wellness in Every Spoon',
         benefitsDesc: 'Formulated with time‑tested Ayurvedic ingredients to support your wellness journey.',
@@ -1753,13 +1848,15 @@
         r4: 'Pure & Safe',
         ctaTitle: 'Start Your Wellness Journey Today',
         ctaDesc: 'Join thousands of satisfied customers who have embraced a healthier lifestyle with Greenhouse.',
-        ctaBtn: 'Order Now — ₹499',
+        ctaBtn: 'Order Now — ₹699',
         freeShipping: 'Free shipping on orders above ₹999',
         modalTitle: 'Place Your Order',
         modalSub: 'Fill in your details and we\'ll confirm your order via WhatsApp.',
         fullName: 'Full Name',
         mobileLabel: 'Mobile Number',
         addressLabel: 'Delivery Address',
+        ageLabel: 'Age (years)',
+        weightLabel: 'Weight (kg)',
         qtyLabel: 'Quantity (packs)',
         buyNow: 'Buy Now',
         home: 'Home',
@@ -1781,17 +1878,6 @@
         stat1: 'शक्तिशाली जड़ी-बूटियाँ',
         stat2: 'नेट वजन',
         stat3: 'प्राकृतिक',
-        productName: 'वजन घटाने का पाउडर',
-        netWeight: 'नेट वजन: 200 ग्राम',
-        naturalBadge: '100% प्राकृतिक',
-        perPack: '/ पैक',
-        addToCart: 'कार्ट में डालें',
-        productName2: 'आयुर्वेदिक मिश्रण',
-        blendWeight: '5 शक्तिशाली जड़ी-बूटियाँ',
-        pureBadge: '100% शुद्ध',
-        productName3: 'वेलनेस फॉर्मूला',
-        formulaWeight: 'चयापचय को बढ़ावा देता है',
-        noPreservatives: 'कोई संरक्षक नहीं',
         benefitsLabel: 'ग्रीनहाउस क्यों चुनें',
         benefitsTitle: 'हर चम्मच में वेलनेस',
         benefitsDesc: 'आपकी वेलनेस यात्रा को समर्थन देने के लिए समय-परीक्षित आयुर्वेदिक सामग्री के साथ तैयार किया गया।',
@@ -1837,13 +1923,15 @@
         r4: 'शुद्ध और सुरक्षित',
         ctaTitle: 'आज ही अपनी वेलनेस यात्रा शुरू करें',
         ctaDesc: 'हजारों संतुष्ट ग्राहकों के साथ जुड़ें जिन्होंने ग्रीनहाउस के साथ एक स्वस्थ जीवनशैली अपनाई है।',
-        ctaBtn: 'अभी ऑर्डर करें — ₹499',
+        ctaBtn: 'अभी ऑर्डर करें — ₹699',
         freeShipping: '₹999 से अधिक के ऑर्डर पर मुफ्त शिपिंग',
         modalTitle: 'अपना ऑर्डर दें',
         modalSub: 'अपना विवरण भरें और हम आपके ऑर्डर की पुष्टि WhatsApp के माध्यम से करेंगे।',
         fullName: 'पूरा नाम',
         mobileLabel: 'मोबाइल नंबर',
         addressLabel: 'डिलीवरी पता',
+        ageLabel: 'आयु (वर्ष)',
+        weightLabel: 'वजन (किलो)',
         qtyLabel: 'मात्रा (पैक)',
         buyNow: 'अभी खरीदें',
         home: 'होम',
@@ -1865,17 +1953,6 @@
         stat1: 'શક્તિશાળી જડીબુટ્ટીઓ',
         stat2: 'ચોખ્ખું વજન',
         stat3: 'કુદરતી',
-        productName: 'વજન ઘટાડવાનો પાઉડર',
-        netWeight: 'ચોખ્ખું વજન: 200 ગ્રામ',
-        naturalBadge: '100% કુદરતી',
-        perPack: '/ પેક',
-        addToCart: 'કાર્ટમાં ઉમેરો',
-        productName2: 'આયુર્વેદિક મિશ્રણ',
-        blendWeight: '5 શક્તિશાળી જડીબુટ્ટીઓ',
-        pureBadge: '100% શુદ્ધ',
-        productName3: 'વેલનેસ ફોર્મ્યુલા',
-        formulaWeight: 'ચયાપચયને ટેકો આપે છે',
-        noPreservatives: 'કોઈ પ્રિઝર્વેટિવ્સ નહીં',
         benefitsLabel: 'ગ્રીનહાઉસ શા માટે પસંદ કરો',
         benefitsTitle: 'દરેક ચમચીમાં વેલનેસ',
         benefitsDesc: 'તમારી વેલનેસ યાત્રાને ટેકો આપવા માટે સમય-પરીક્ષિત આયુર્વેદિક ઘટકો સાથે તૈયાર કરવામાં આવ્યું છે.',
@@ -1921,13 +1998,15 @@
         r4: 'શુદ્ધ અને સુરક્ષિત',
         ctaTitle: 'આજે જ તમારી વેલનેસ યાત્રા શરૂ કરો',
         ctaDesc: 'હજારો સંતુષ્ટ ગ્રાહકો સાથે જોડાઓ જેમણે ગ્રીનહાઉસ સાથે સ્વસ્થ જીવનશૈલી અપનાવી છે.',
-        ctaBtn: 'હવે ઓર્ડર કરો — ₹499',
+        ctaBtn: 'હવે ઓર્ડર કરો — ₹699',
         freeShipping: '₹999થી વધુના ઓર્ડર પર મફત શિપિંગ',
         modalTitle: 'તમારો ઓર્ડર આપો',
         modalSub: 'તમારી વિગતો ભરો અને અમે તમારા ઓર્ડરની WhatsApp દ્વારા પુષ્ટિ કરીશું.',
         fullName: 'પૂરું નામ',
         mobileLabel: 'મોબાઇલ નંબર',
         addressLabel: 'ડિલિવરી સરનામું',
+        ageLabel: 'ઉંમર (વર્ષ)',
+        weightLabel: 'વજન (કિલો)',
         qtyLabel: 'જથ્થો (પેક)',
         buyNow: 'હવે ખરીદો',
         home: 'હોમ',
@@ -1935,7 +2014,6 @@
       }
     };
 
-    // Toggle dropdown
     langToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       langMenu.classList.toggle('open');
@@ -1945,7 +2023,6 @@
       langMenu.classList.remove('open');
     });
 
-    // Language switch
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang;
@@ -1958,28 +2035,11 @@
     });
 
     function setLanguage(lang) {
-      const elements = document.querySelectorAll('[data-i18n]');
-      elements.forEach(el => {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (translations[lang] && translations[lang][key] !== undefined) {
           if (el.children.length === 0) {
             el.textContent = translations[lang][key];
-          } else {
-            const clone = el.cloneNode(true);
-            const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT, null, false);
-            let node;
-            while (node = walker.nextNode()) {
-              const parent = node.parentElement;
-              if (parent && parent.dataset.i18n) {
-                const key2 = parent.dataset.i18n;
-                if (translations[lang] && translations[lang][key2] !== undefined) {
-                  node.textContent = translations[lang][key2];
-                }
-              }
-            }
-            el.replaceWith(clone);
-            const newEl = document.querySelector(`[data-i18n="${key}"]`);
-            if (newEl) {}
           }
         }
       });
@@ -2001,9 +2061,13 @@
       const usernameInput = document.getElementById('username');
       const mobileInput = document.getElementById('mobile');
       const addressInput = document.getElementById('address');
+      const ageInput = document.getElementById('age');
+      const weightInput = document.getElementById('weight');
       if (usernameInput) usernameInput.placeholder = translations[lang].fullName || 'Full Name';
       if (mobileInput) mobileInput.placeholder = translations[lang].mobileLabel || 'Mobile Number';
       if (addressInput) addressInput.placeholder = translations[lang].addressLabel || 'Delivery Address';
+      if (ageInput) ageInput.placeholder = translations[lang].ageLabel || 'Age (years)';
+      if (weightInput) weightInput.placeholder = translations[lang].weightLabel || 'Weight (kg)';
 
       localStorage.setItem('greenhouse-lang', lang);
     }
@@ -2073,4 +2137,4 @@
   </script>
 
 </body>
-</html> 
+</html>
