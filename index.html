@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+    /* ───────── RESET & BASE ───────── */
     *,
     *::before,
     *::after {
@@ -50,35 +51,37 @@
     .btn-primary {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       background: var(--green-dark);
       color: #fff;
-      padding: 16px 40px;
+      padding: 14px 20px;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       border: none;
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 8px 24px rgba(30, 58, 47, 0.25);
+      box-shadow: 0 4px 12px rgba(30, 58, 47, 0.15);
       letter-spacing: 0.3px;
     }
     .btn-primary:hover {
       background: var(--green-mid);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(30, 58, 47, 0.30);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30, 58, 47, 0.25);
     }
 
     .btn-secondary {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       background: transparent;
       color: var(--green-dark);
-      padding: 14px 34px;
+      padding: 12px 20px;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       border: 2px solid var(--green-dark);
       cursor: pointer;
       transition: var(--transition);
@@ -86,7 +89,7 @@
     .btn-secondary:hover {
       background: var(--green-dark);
       color: #fff;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     /* ───────── HEADER / NAV ───────── */
@@ -103,18 +106,10 @@
     .navbar.scrolled { padding: 10px 0; box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08); }
     .navbar .container { display: flex; align-items: center; justify-content: space-between; }
 
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-icon { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; }
-    .logo-icon .leaf-icon { font-size: 2.2rem; color: var(--green-dark); margin-bottom: -4px; }
-    .logo-icon .brand-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green-dark); letter-spacing: 1px; }
-    .logo-icon .brand-sub { font-size: 0.55rem; font-weight: 600; letter-spacing: 2.5px; color: var(--warm-gray); text-transform: uppercase; margin-top: -2px; }
-    .logo-divider { width: 2px; height: 40px; background: var(--gold); opacity: 0.5; }
-    .logo-text { display: flex; flex-direction: column; }
-    .logo-text .top { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--green-dark); line-height: 1.1; }
-    .logo-text .top i { color: var(--gold); font-size: 1.3rem; margin-right: 4px; }
-    .logo-text .bottom { font-size: 0.6rem; font-weight: 600; letter-spacing: 2.8px; color: var(--warm-gray); text-transform: uppercase; margin-top: -2px; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 65px; width: auto; object-fit: contain; }
 
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
     .nav-links a {
       font-weight: 500; font-size: 0.95rem; color: var(--text-dark);
       transition: var(--transition); position: relative;
@@ -128,6 +123,34 @@
     .nav-cta { background: var(--green-dark) !important; color: #fff !important; padding: 10px 24px; border-radius: 60px; font-weight: 600; transition: var(--transition); }
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { background: var(--green-mid) !important; color: #fff !important; }
+
+    /* Cart Icon */
+    .cart-icon-wrapper {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+    }
+    .cart-icon-wrapper:hover { color: var(--green-accent); }
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #e74c3c;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+    }
 
     .lang-dropdown { position: relative; display: inline-block; }
     .lang-dropdown .lang-btn {
@@ -206,8 +229,8 @@
       will-change: transform;
     }
     .slide-card {
-      flex: 0 0 100%; background: #ffffff; padding: 24px 18px 24px;
-      text-align: center; border-radius: var(--radius); min-height: 440px;
+      flex: 0 0 100%; background: #ffffff; padding: 24px 18px 20px;
+      text-align: center; border-radius: var(--radius); min-height: 460px;
       display: flex; flex-direction: column; align-items: center;
       justify-content: flex-start; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
       position: relative;
@@ -215,19 +238,35 @@
     .slide-card .product-image {
       width: 100%; max-width: 200px; height: 200px; margin: 0 auto 12px;
       display: flex; align-items: center; justify-content: center;
-      background: #faf8f4; border-radius: 16px; padding: 12px; overflow: hidden;
+      background: #faf8f4; border-radius: 16px; padding: 8px; overflow: hidden;
     }
     .slide-card .product-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .slide-card .product-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green-dark); margin-bottom: 2px; font-weight: 700; }
+    .slide-card .product-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--green-dark); margin-bottom: 2px; font-weight: 700; }
     .slide-card .product-sub { font-size: 0.8rem; color: var(--warm-gray); margin-bottom: 6px; font-weight: 400; }
     .slide-card .product-badge {
       display: inline-block; background: var(--green-dark); color: #fff;
       padding: 3px 14px; border-radius: 60px; font-size: 0.65rem;
       font-weight: 600; letter-spacing: 1px; margin-bottom: 8px;
     }
-    .slide-card .price-tag { font-size: 1.8rem; font-weight: 700; color: var(--green-dark); margin: 4px 0 8px; }
-    .slide-card .price-tag small { font-size: 1rem; font-weight: 400; color: var(--warm-gray); }
-    .slide-card .btn-primary { padding: 12px 36px; font-size: 0.95rem; width: 100%; justify-content: center; margin-top: 4px; }
+    .slide-card .price-tag { font-size: 1.6rem; font-weight: 700; color: var(--green-dark); margin: 4px 0 12px; }
+    .slide-card .price-tag small { font-size: 0.9rem; font-weight: 400; color: var(--warm-gray); }
+    
+    /* Card Buttons Layout */
+    .card-btn-group {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+    .card-btn-group .btn-primary,
+    .card-btn-group .btn-secondary {
+      flex: 1;
+      padding: 10px 0;
+      font-size: 0.85rem;
+      border-radius: 30px;
+    }
+
     .slide-card .card-footer {
       display: flex; justify-content: space-between; width: 100%; margin-top: 8px;
       font-size: 0.75rem; color: var(--warm-gray);
@@ -237,23 +276,23 @@
 
     .slider-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
-      width: 42px; height: 42px; border-radius: 50%;
+      width: 36px; height: 36px; border-radius: 50%;
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(30, 58, 47, 0.1); color: var(--green-dark);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; z-index: 10; transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08); font-size: 0.9rem;
     }
     .slider-arrow:hover { background: var(--green-dark); color: #fff; }
-    .slider-arrow.prev { left: 10px; }
-    .slider-arrow.next { right: 10px; }
+    .slider-arrow.prev { left: 6px; }
+    .slider-arrow.next { right: 6px; }
 
-    .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+    .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
     .slider-dots .dot {
-      width: 10px; height: 10px; border-radius: 50%; background: #ccc;
+      width: 8px; height: 8px; border-radius: 50%; background: #ccc;
       cursor: pointer; transition: var(--transition); border: none; padding: 0;
     }
-    .slider-dots .dot.active { background: var(--green-dark); transform: scale(1.2); }
+    .slider-dots .dot.active { background: var(--green-dark); transform: scale(1.3); }
     .slider-dots .dot:hover { background: var(--green-accent); }
 
     .floating-leaf {
@@ -336,7 +375,7 @@
     .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--green-dark); margin-bottom: 8px; }
     .cta-section p { color: var(--warm-gray); max-width: 500px; margin: 0 auto 28px; font-size: 1.05rem; }
 
-    /* ───────── ORDER FORM (Modal) ───────── */
+    /* ───────── MODAL (ORDER & CART) ───────── */
     .modal-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(6px);
@@ -346,7 +385,7 @@
     .modal-overlay.active { opacity: 1; visibility: visible; }
     .modal {
       background: #fff; max-width: 520px; width: 94%;
-      padding: 40px 32px 36px; border-radius: 24px;
+      padding: 32px 28px 28px; border-radius: 24px;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
       transform: scale(0.94) translateY(20px); transition: var(--transition);
       max-height: 90vh; overflow-y: auto;
@@ -357,26 +396,89 @@
       cursor: pointer; color: var(--warm-gray); transition: var(--transition); padding: 0 6px;
     }
     .modal .close-btn:hover { color: var(--text-dark); transform: rotate(90deg); }
-    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--green-dark); margin-bottom: 6px; }
-    .modal .subhead { color: var(--warm-gray); font-size: 0.9rem; margin-bottom: 24px; }
-    .modal .form-group { margin-bottom: 18px; }
+    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--green-dark); margin-bottom: 6px; }
+    .modal .subhead { color: var(--warm-gray); font-size: 0.9rem; margin-bottom: 20px; }
+    
+    /* Cart Items List */
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-item-row img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-info h4 { font-size: 0.95rem; color: var(--green-dark); }
+    .cart-item-info p { font-size: 0.85rem; color: var(--warm-gray); }
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qty-btn {
+      background: var(--cream);
+      border: 1px solid #ddd;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-btn:hover { background: var(--green-light); color: #fff; border-color: var(--green-light); }
+    .cart-item-qty { font-size: 0.9rem; font-weight: 600; width: 20px; text-align: center; }
+    .cart-item-price { font-weight: 700; color: var(--green-dark); min-width: 60px; text-align: right; font-size: 0.95rem; }
+    .remove-item { color: #e74c3c; background: none; border: none; cursor: pointer; font-size: 1.1rem; margin-left: 6px; }
+    
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .cart-empty { text-align: center; padding: 30px 0; color: var(--warm-gray); }
+
+    /* Order Summary Box inside Form */
+    .order-summary-box {
+      background: var(--cream);
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+    .order-summary-box p { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .order-summary-box .total-line { font-weight: 700; color: var(--green-dark); border-top: 1px dashed #ccc; padding-top: 6px; margin-top: 6px; }
+
+    .modal .form-group { margin-bottom: 16px; }
     .modal .form-group label { display: block; font-weight: 600; font-size: 0.85rem; color: var(--text-dark); margin-bottom: 4px; }
     .modal .form-group input,
     .modal .form-group textarea {
-      width: 100%; padding: 12px 16px; border: 1.5px solid #e0ddd8;
-      border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif;
+      width: 100%; padding: 10px 14px; border: 1.5px solid #e0ddd8;
+      border-radius: 10px; font-size: 0.95rem; font-family: 'Inter', sans-serif;
       transition: var(--transition); background: var(--off-white);
     }
     .modal .form-group input:focus,
     .modal .form-group textarea:focus {
       outline: none; border-color: var(--green-accent);
-      box-shadow: 0 0 0 4px rgba(61, 140, 90, 0.12); background: #fff;
+      box-shadow: 0 0 0 3px rgba(61, 140, 90, 0.12); background: #fff;
     }
-    .modal .form-group textarea { resize: vertical; min-height: 70px; }
-    .modal .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .modal .form-group textarea { resize: vertical; min-height: 60px; }
     .modal .btn-buy {
-      width: 100%; padding: 16px; background: var(--green-dark); color: #fff;
-      border: none; border-radius: 60px; font-weight: 700; font-size: 1.1rem;
+      width: 100%; padding: 14px; background: var(--green-dark); color: #fff;
+      border: none; border-radius: 60px; font-weight: 700; font-size: 1rem;
       cursor: pointer; transition: var(--transition); margin-top: 8px;
       display: flex; align-items: center; justify-content: center; gap: 10px;
     }
@@ -413,7 +515,7 @@
     }
 
     /* ───────── RESPONSIVE ───────── */
-    @media (max-width: 1024px) { .hero h1 { font-size: 2.8rem; } }
+    @media (max-width: 1024px) { .hero h1 { font-size: 2.8rem; } .logo img { height: 50px; } }
     @media (max-width: 868px) {
       .hero .container { grid-template-columns: 1fr; text-align: center; }
       .hero .description { margin-left: auto; margin-right: auto; }
@@ -431,7 +533,6 @@
       .hamburger { display: flex; z-index: 1001; }
       .nav-cta { background: var(--green-dark) !important; color: #fff !important; padding: 14px 36px; border-radius: 60px; }
       .lang-dropdown .lang-menu { right: -10px; min-width: 150px; }
-      .modal .form-row { grid-template-columns: 1fr; }
       .footer .container { flex-direction: column; align-items: center; text-align: center; }
       .footer .brand { align-items: center; }
       .footer .contact-info { align-items: center; }
@@ -445,7 +546,8 @@
       .hero-stats { gap: 24px; flex-wrap: wrap; }
       .footer .container { flex-direction: column; text-align: center; }
       .footer .links { justify-content: center; }
-      .modal { padding: 28px 18px; }
+      .modal { padding: 20px 16px; }
+      .logo img { height: 40px; }
     }
   </style>
 </head>
@@ -455,17 +557,8 @@
   <header class="navbar" id="navbar">
     <div class="container">
       <a href="#" class="logo">
-        <div class="logo-icon">
-<div class="logo">
-    <img src="logo.png" alt="The Greenhouse Logo">
-</div>          <span class="brand-name">The Greenhouse</span>
-          <span class="brand-sub">AYURVEDIC COMPANY</span>
-        </div>
-       <!--  <div class="logo-divider"></div>
-        <div class="logo-text">
-          <span class="top"><i class="fas fa-leaf"></i>Weight Loss</span>
-          <span class="bottom">Powder</span>
-        </div> -->
+        <!-- NEW LOGO IMAGE -->
+        <img src="logo.jpeg" alt="The Greenhouse Ayurvedic" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 100\'%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'24\' font-weight=\'bold\' fill=\'%231e3a2f\'%3ETHE GREENHOUSE AYURVEDIC%3C/text%3E%3C/svg%3E'" />
       </a>
 
       <ul class="nav-links" id="navLinks">
@@ -473,6 +566,13 @@
         <li><a href="#ingredients" data-i18n="navIngredients">Ingredients</a></li>
         <li><a href="#howto" data-i18n="navHowto">How to Use</a></li>
         <li><a href="#cta" class="nav-cta" data-i18n="navShop">Shop Now</a></li>
+        
+        <!-- CART ICON -->
+        <li class="cart-icon-wrapper" id="cartIconBtn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </li>
+
         <li class="lang-dropdown">
           <button class="lang-btn" id="langToggle">
             <i class="fas fa-globe"></i> <span id="currentLangLabel">EN</span> <i class="fas fa-chevron-down"></i>
@@ -500,31 +600,25 @@
         <div class="hero-badge" data-i18n="heroBadge">100% Natural</div>
         <p class="subtitle" data-i18n="heroSubtitle">The Greenhouse</p>
         <h1 id="heroTitle">
-          <span id="heroProductName">Weight Loss</span><br />
-          <span class="highlight" id="heroProductType">Powder</span>
+          <span id="heroProductName">Pachanmitra</span><br />
+          <span class="highlight" id="heroProductType">Churna</span>
         </h1>
-        <p class="tagline" id="heroTagline">Natural Ayurvedic Wellness Formula</p>
+        <p class="tagline" id="heroTagline">Ayurvedic Digestive Wellness Formula</p>
         <p class="description" id="heroDescription">
-          Harness the power of ancient Ayurvedic herbs to support healthy
-          weight management, boost metabolism, and improve digestion — all
-          naturally.
+          A traditional Ayurvedic blend designed to support healthy digestion, relieve gas, acidity, and constipation, keeping your stomach light and comfortable.
         </p>
         <div class="actions">
-          <button class="btn-primary" id="orderNowBtn">
-            <i class="fas fa-shopping-bag"></i> <span data-i18n="orderNow">Order Now</span>
+          <button class="btn-primary" id="heroBuyNowBtn">
+            <i class="fas fa-shopping-bag"></i> <span data-i18n="buyNow">Buy Now</span>
           </button>
-          <a href="#ingredients" class="btn-secondary">
-            <i class="fas fa-info-circle"></i> <span data-i18n="learnMore">Learn More</span>
-          </a>
+          <button class="btn-secondary" id="heroAddToCartBtn">
+            <i class="fas fa-cart-plus"></i> <span data-i18n="addToCart">Add to Cart</span>
+          </button>
         </div>
         <div class="hero-stats">
           <div class="stat">
-            <span class="number" id="statHerbs">5</span>
-            <span class="label" id="statHerbsLabel" data-i18n="stat1">Potent Herbs</span>
-          </div>
-          <div class="stat">
-            <span class="number">200g</span>
-            <span class="label" data-i18n="stat2">Net Weight</span>
+            <span class="number" id="statHerbs">9</span>
+            <span class="label" id="statHerbsLabel" data-i18n="stat1">Ayurvedic Herbs</span>
           </div>
           <div class="stat">
             <span class="number">100%</span>
@@ -544,47 +638,12 @@
           </button>
 
           <div class="slider-track" id="sliderTrack">
-            <!-- CARD 1: Weight Loss Powder -->
-            <div class="slide-card" data-product="weightLoss">
-              <div class="product-image">
-              <img src="product1.jpg" alt="Greenhouse Weight Loss Powder" />
-              </div>
-              <div class="product-title" id="cardTitle1">Weight Loss Powder</div>
-              <div class="product-sub" id="cardSub1">Natural Ayurvedic Wellness Formula</div>
-              <div class="product-badge" id="cardBadge1">100% NATURAL</div>
-              <div class="price-tag">₹699 <small data-i18n="perPack">/ pack</small></div>
-              <button class="btn-primary add-to-cart" data-product="weightLoss">
-                <i class="fas fa-shopping-cart"></i> <span data-i18n="addToCart">Add to Cart</span>
-              </button>
-              <div class="card-footer">
-                <span><i class="fas fa-star"></i> 4.8 (2.3k)</span>
-                <span><i class="fas fa-shield-alt"></i> <span data-i18n="safeTag">Pure &amp; Safe</span></span>
-              </div>
-            </div>
-
-            <!-- CARD 2: Joint Pain Powder -->
-            <div class="slide-card" data-product="jointPain" style="background:#faf8f4;">
-              <div class="product-image">
-             <img src="product2.jpeg" alt="jointPain" />
-              </div>
-              <div class="product-title" id="cardTitle2">Joint Pain Powder</div>
-              <div class="product-sub" id="cardSub2">Ayurvedic Joint Support Formula</div>
-              <div class="product-badge" id="cardBadge2">100% AYURVEDIC</div>
-              <div class="price-tag">₹499 <small data-i18n="perPack">/ pack</small></div>
-              <button class="btn-primary add-to-cart" data-product="jointPain">
-                <i class="fas fa-shopping-cart"></i> <span data-i18n="addToCart">Add to Cart</span>
-              </button>
-              <div class="card-footer">
-                <span><i class="fas fa-star"></i> 4.9 (1.8k)</span>
-                <span><i class="fas fa-leaf"></i> <span data-i18n="noSideTag">No Side Effects</span></span>
-              </div>
-            </div>
+            <!-- Slides Generated by JS -->
           </div>
         </div>
 
         <div class="slider-dots" id="sliderDots">
-          <button class="dot active" data-index="0" aria-label="Weight Loss Powder"></button>
-          <button class="dot" data-index="1" aria-label="Joint Pain Powder"></button>
+          <!-- Dots Generated by JS -->
         </div>
 
         <div class="floating-leaf"><i class="fas fa-leaf"></i></div>
@@ -598,9 +657,9 @@
   <section class="benefits" id="benefits">
     <div class="container">
       <div class="section-title">
-        <span class="label" id="benefitsLabel">Why Choose Greenhouse</span>
-        <h2 id="benefitsTitle">Wellness in Every Spoon</h2>
-        <p id="benefitsDesc">Formulated with time‑tested Ayurvedic ingredients to support your wellness journey.</p>
+        <span class="label" id="benefitsLabel">Power of Ayurveda</span>
+        <h2 id="benefitsTitle">Healthy Digestion, Happy Life</h2>
+        <p id="benefitsDesc">Formulated to relieve gas, acidity, and constipation while promoting overall gut health.</p>
       </div>
       <div class="benefits-grid" id="benefitsGrid"></div>
     </div>
@@ -612,7 +671,7 @@
       <div class="section-title">
         <span class="label" id="ingLabel">Power of Ayurveda</span>
         <h2 id="ingTitle">Our Ingredients</h2>
-        <p id="ingDesc">Five potent herbs, carefully sourced and blended for maximum benefit.</p>
+        <p id="ingDesc">Nine potent Ayurvedic ingredients blended for optimal digestive health.</p>
       </div>
       <div class="ingredients-grid" id="ingredientsGrid"></div>
     </div>
@@ -624,7 +683,7 @@
       <div class="section-title">
         <span class="label" id="howLabel">Simple &amp; Effective</span>
         <h2 id="howTitle">How to Use</h2>
-        <p id="howDesc">Incorporate Greenhouse powder into your daily routine.</p>
+        <p id="howDesc">Incorporate Greenhouse products into your daily routine.</p>
       </div>
       <div class="how-to-grid" id="howGrid"></div>
     </div>
@@ -633,13 +692,9 @@
   <!-- ═══════════ RESULTS ═══════════ -->
   <section class="results" id="results">
     <div class="container">
-      <div class="big-number" id="resultBig">2–3 kg</div>
-      <div class="big-label" id="resultLabel">Average weight loss in 1 month*</div>
-      <p id="resultDesc">
-        Our customers have seen remarkable results when combined with a
-        balanced lifestyle. Greenhouse is crafted to support your goals —
-        naturally and safely.
-      </p>
+      <div class="big-number" id="resultBig">100%</div>
+      <div class="big-label" id="resultLabel">Ayurvedic & Natural Formula</div>
+      <p id="resultDesc">A traditional Ayurvedic blend designed to support healthy digestion and keep your stomach light and comfortable.</p>
       <div class="badge-row" id="resultBadges"></div>
     </div>
   </section>
@@ -648,12 +703,9 @@
   <section class="cta-section" id="cta">
     <div class="container">
       <h2 id="ctaTitle">Start Your Wellness Journey Today</h2>
-      <p id="ctaDesc">
-        Join thousands of satisfied customers who have embraced a healthier
-        lifestyle with Greenhouse.
-      </p>
+      <p id="ctaDesc">Join thousands of satisfied customers who have embraced a healthier lifestyle with Greenhouse.</p>
       <button class="btn-primary" id="ctaOrderBtn" style="font-size:1.1rem; padding:18px 52px;">
-        <i class="fas fa-shopping-bag"></i> <span id="ctaBtnText">Order Now — ₹699</span>
+        <i class="fas fa-shopping-bag"></i> <span id="ctaBtnText">Buy Now — ₹399</span>
       </button>
       <p style="margin-top:16px; font-size:0.85rem; opacity:0.6;">
         <i class="fas fa-truck"></i> <span data-i18n="freeShipping">Free shipping on orders above ₹999</span>
@@ -661,12 +713,38 @@
     </div>
   </section>
 
+  <!-- ═══════════ CART MODAL ═══════════ -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal">
+      <button class="close-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+      <h3>Your Shopping Cart</h3>
+      <p class="subhead" id="cartSubhead">Review your items before checkout.</p>
+      
+      <div id="cartItemsContainer"></div>
+      
+      <div class="cart-total-row">
+        <span>Total Amount:</span>
+        <span id="cartTotalPrice">₹0</span>
+      </div>
+      
+      <button class="btn-buy" id="checkoutBtn">
+        <i class="fab fa-whatsapp"></i> Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
   <!-- ═══════════ ORDER FORM MODAL ═══════════ -->
   <div class="modal-overlay" id="orderModal">
     <div class="modal">
       <button class="close-btn" id="closeModalBtn" aria-label="Close form">&times;</button>
       <h3 id="modalTitle" data-i18n="modalTitle">Place Your Order</h3>
       <p class="subhead" id="modalSub">Fill in your details and we'll confirm your order via WhatsApp.</p>
+      
+      <!-- Order Summary Box -->
+      <div class="order-summary-box" id="orderSummaryBox">
+        <!-- Populated by JS -->
+      </div>
+
       <form id="orderForm">
         <div class="form-group">
           <label for="username" data-i18n="labelFullName">Full Name</label>
@@ -680,22 +758,12 @@
           <label for="address" data-i18n="labelAddress">Delivery Address</label>
           <textarea id="address" placeholder="Street, city, pincode" required></textarea>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="age" data-i18n="labelAge">Age (years)</label>
-            <input type="number" id="age" placeholder="e.g. 30" min="10" max="100" required />
-          </div>
-          <div class="form-group">
-            <label for="weight" data-i18n="labelWeight">Weight (kg)</label>
-            <input type="number" id="weight" placeholder="e.g. 75" min="20" max="300" required />
-          </div>
-        </div>
         <div class="form-group">
-          <label for="quantity" data-i18n="labelQty">Quantity (packs)</label>
-          <input type="number" id="quantity" value="1" min="1" max="20" required />
+          <label for="age" data-i18n="labelAge">Age (years)</label>
+          <input type="number" id="age" placeholder="e.g. 30" min="10" max="100" required />
         </div>
         <button type="submit" class="btn-buy">
-          <i class="fab fa-whatsapp"></i> <span data-i18n="buyNow">Buy Now</span>
+          <i class="fab fa-whatsapp"></i> <span data-i18n="confirmOrder">Confirm Order</span>
         </button>
       </form>
     </div>
@@ -736,425 +804,133 @@
 
   <!-- ═══════════ JAVASCRIPT ═══════════ -->
   <script>
-    /* ═══════════════════════════════════════════════════════════
-       UI TRANSLATIONS — static text that appears on the page
-    ═══════════════════════════════════════════════════════════ */
     const uiTranslations = {
       en: {
-        navBenefits: 'Benefits',
-        navIngredients: 'Ingredients',
-        navHowto: 'How to Use',
-        navShop: 'Shop Now',
-        heroBadge: '100% Natural',
-        heroSubtitle: 'The Greenhouse',
-        orderNow: 'Order Now',
-        learnMore: 'Learn More',
-        stat1: 'Potent Herbs',
-        stat2: 'Net Weight',
-        stat3: 'Natural',
-        addToCart: 'Add to Cart',
-        perPack: '/ pack',
-        safeTag: 'Pure & Safe',
-        noSideTag: 'No Side Effects',
-        freeShipping: 'Free shipping on orders above ₹999',
-        footerHome: 'Home',
-        footerTagline: 'Bringing Ayurveda Back to Life',
-        modalTitle: 'Place Your Order',
-        modalSubPrefix: 'Fill in your details to order ',
-        modalSubSuffix: ". We'll confirm via WhatsApp.",
-        labelFullName: 'Full Name',
-        labelMobile: 'Mobile Number',
-        labelAddress: 'Delivery Address',
-        labelAge: 'Age (years)',
-        labelWeight: 'Weight (kg)',
-        labelQty: 'Quantity (packs)',
-        buyNow: 'Buy Now',
-        placeholderName: 'e.g. Raj Sharma',
-        placeholderMobile: 'e.g. 9876543210',
-        placeholderAddress: 'Street, city, pincode',
-        placeholderAge: 'e.g. 30',
-        placeholderWeight: 'e.g. 75',
-        cardTitle1: 'Weight Loss Powder',
-        cardSub1: 'Natural Ayurvedic Wellness Formula',
-        cardBadge1: '100% NATURAL',
-        cardTitle2: 'Joint Pain Powder',
-        cardSub2: 'Ayurvedic Joint Support Formula',
-        cardBadge2: '100% AYURVEDIC'
+        navBenefits: 'Benefits', navIngredients: 'Ingredients', navHowto: 'How to Use', navShop: 'Shop Now',
+        heroBadge: '100% Natural', heroSubtitle: 'The Greenhouse', orderNow: 'Buy Now', learnMore: 'Learn More',
+        stat1: 'Ayurvedic Herbs', stat3: 'Natural', addToCart: 'Add to Cart', perPack: '/ pack',
+        safeTag: 'Pure & Safe', noSideTag: 'No Side Effects', freeShipping: 'Free shipping on orders above ₹999',
+        footerHome: 'Home', footerTagline: 'Bringing Ayurveda Back to Life', modalTitle: 'Place Your Order',
+        modalSubPrefix: 'Fill in your details to order ', modalSubSuffix: ". We'll confirm via WhatsApp.",
+        labelFullName: 'Full Name', labelMobile: 'Mobile Number', labelAddress: 'Delivery Address', labelAge: 'Age (years)',
+        labelQty: 'Quantity', buyNow: 'Buy Now', confirmOrder: 'Confirm Order',
+        placeholderName: 'e.g. Raj Sharma', placeholderMobile: 'e.g. 9876543210',
+        placeholderAddress: 'Street, city, pincode', placeholderAge: 'e.g. 30',
+        cardTitle0: 'Pachanmitra Churna', cardSub0: 'Ayurvedic Digestive Formula', cardBadge0: '100% NATURAL',
+        cardTitle1: 'Joint Pain Powder', cardSub1: 'Ayurvedic Joint Support Formula', cardBadge1: '100% AYURVEDIC',
+        cardTitle2: 'Growth Hair Oil', cardSub2: 'Ayurvedic Hair Growth Formula', cardBadge2: '100% AYURVEDIC',
+        cardTitle3: 'Amla Soap', cardSub3: 'Natural Hairwash Soap', cardBadge3: 'HANDMADE',
+        cardTitle4: 'Multani Mitti Soap', cardSub4: 'For Deep Cleanse & Natural Glow', cardBadge4: 'HANDMADE',
+        cardTitle5: 'Neem Soap', cardSub5: 'Anti Bacterial & Anti Fungal', cardBadge5: 'HANDMADE'
       },
       hi: {
-        navBenefits: 'लाभ',
-        navIngredients: 'सामग्री',
-        navHowto: 'उपयोग कैसे करें',
-        navShop: 'अभी खरीदें',
-        heroBadge: '100% प्राकृतिक',
-        heroSubtitle: 'द ग्रीनहाउस',
-        orderNow: 'अभी ऑर्डर करें',
-        learnMore: 'और जानें',
-        stat1: 'शक्तिशाली जड़ी-बूटियाँ',
-        stat2: 'नेट वजन',
-        stat3: 'प्राकृतिक',
-        addToCart: 'कार्ट में डालें',
-        perPack: '/ पैक',
-        safeTag: 'शुद्ध और सुरक्षित',
-        noSideTag: 'कोई साइड इफेक्ट नहीं',
-        freeShipping: '₹999 से अधिक के ऑर्डर पर मुफ्त शिपिंग',
-        footerHome: 'होम',
-        footerTagline: 'आयुर्वेद को पुनर्जीवित करना',
-        modalTitle: 'अपना ऑर्डर दें',
-        modalSubPrefix: 'ऑर्डर करने के लिए अपनी जानकारी भरें ',
-        modalSubSuffix: '। हम WhatsApp के माध्यम से पुष्टि करेंगे।',
-        labelFullName: 'पूरा नाम',
-        labelMobile: 'मोबाइल नंबर',
-        labelAddress: 'डिलीवरी पता',
-        labelAge: 'आयु (वर्ष)',
-        labelWeight: 'वजन (किलो)',
-        labelQty: 'मात्रा (पैक)',
-        buyNow: 'अभी खरीदें',
-        placeholderName: 'उदा. राज शर्मा',
-        placeholderMobile: 'उदा. 9876543210',
-        placeholderAddress: 'गली, शहर, पिनकोड',
-        placeholderAge: 'उदा. 30',
-        placeholderWeight: 'उदा. 75',
-        cardTitle1: 'वजन घटाने का पाउडर',
-        cardSub1: 'प्राकृतिक आयुर्वेदिक वेलनेस फॉर्मूला',
-        cardBadge1: '100% प्राकृतिक',
-        cardTitle2: 'जोड़ों के दर्द का पाउडर',
-        cardSub2: 'आयुर्वेदिक जोड़ समर्थन फॉर्मूला',
-        cardBadge2: '100% आयुर्वेदिक'
+        navBenefits: 'लाभ', navIngredients: 'सामग्री', navHowto: 'उपयोग कैसे करें', navShop: 'अभी खरीदें',
+        heroBadge: '100% प्राकृतिक', heroSubtitle: 'द ग्रीनहाउस', orderNow: 'अभी खरीदें', learnMore: 'और जानें',
+        stat1: 'आयुर्वेदिक जड़ी-बूटियाँ', stat3: 'प्राकृतिक', addToCart: 'कार्ट में डालें', perPack: '/ पैक',
+        safeTag: 'शुद्ध और सुरक्षित', noSideTag: 'कोई साइड इफेक्ट नहीं', freeShipping: '₹999 से अधिक के ऑर्डर पर मुफ्त शिपिंग',
+        footerHome: 'होम', footerTagline: 'आयुर्वेद को पुनर्जीवित करना', modalTitle: 'अपना ऑर्डर दें',
+        modalSubPrefix: 'ऑर्डर करने के लिए जानकारी भरें ', modalSubSuffix: '। हम WhatsApp के माध्यम से पुष्टि करेंगे।',
+        labelFullName: 'पूरा नाम', labelMobile: 'मोबाइल नंबर', labelAddress: 'डिलीवरी पता', labelAge: 'आयु (वर्ष)',
+        labelQty: 'मात्रा', buyNow: 'अभी खरीदें', confirmOrder: 'ऑर्डर की पुष्टि करें',
+        placeholderName: 'उदा. राज शर्मा', placeholderMobile: 'उदा. 9876543210',
+        placeholderAddress: 'गली, शहर, पिनकोड', placeholderAge: 'उदा. 30',
+        cardTitle0: 'पाचनमित्र चूर्ण', cardSub0: 'आयुर्वेदिक पाचन फॉर्मूला', cardBadge0: '100% प्राकृतिक',
+        cardTitle1: 'जोड़ों के दर्द का पाउडर', cardSub1: 'आयुर्वेदिक जोड़ समर्थन फॉर्मूला', cardBadge1: '100% आयुर्वेदिक',
+        cardTitle2: 'ग्रोथ हेयर ऑयल', cardSub2: 'आयुर्वेदिक बाल विकास फॉर्मूला', cardBadge2: '100% आयुर्वेदिक',
+        cardTitle3: 'आंवला साबुन', cardSub3: 'प्राकृतिक हेयरवॉश साबुन', cardBadge3: 'हैंडमेड',
+        cardTitle4: 'मुल्तानी मिट्टी साबुन', cardSub4: 'गहरी सफाई और प्राकृतिक चमक के लिए', cardBadge4: 'हैंडमेड',
+        cardTitle5: 'नीम साबुन', cardSub5: 'जीवाणुरोधी और कवकनाशी', cardBadge5: 'हैंडमेड'
       },
       gu: {
-        navBenefits: 'લાભો',
-        navIngredients: 'ઘટકો',
-        navHowto: 'ઉપયોગ કેવી રીતે કરો',
-        navShop: 'હવે ખરીદો',
-        heroBadge: '100% કુદરતી',
-        heroSubtitle: 'ધ ગ્રીનહાઉસ',
-        orderNow: 'હવે ઓર્ડર કરો',
-        learnMore: 'વધુ જાણો',
-        stat1: 'શક્તિશાળી જડીબુટ્ટીઓ',
-        stat2: 'ચોખ્ખું વજન',
-        stat3: 'કુદરતી',
-        addToCart: 'કાર્ટમાં ઉમેરો',
-        perPack: '/ પેક',
-        safeTag: 'શુદ્ધ અને સુરક્ષિત',
-        noSideTag: 'કોઈ આડઅસર નહીં',
-        freeShipping: '₹999થી વધુના ઓર્ડર પર મફત શિપિંગ',
-        footerHome: 'હોમ',
-        footerTagline: 'આયુર્વેદને પુનર્જીવિત કરવું',
-        modalTitle: 'તમારો ઓર્ડર આપો',
-        modalSubPrefix: 'ઓર્ડર કરવા માટે તમારી વિગતો ભરો ',
-        modalSubSuffix: '। અમે WhatsApp દ્વારા પુષ્ટિ કરીશું।',
-        labelFullName: 'પૂરું નામ',
-        labelMobile: 'મોબાઇલ નંબર',
-        labelAddress: 'ડિલિવરી સરનામું',
-        labelAge: 'ઉંમર (વર્ષ)',
-        labelWeight: 'વજન (કિલો)',
-        labelQty: 'જથ્થો (પેક)',
-        buyNow: 'હવે ખરીદો',
-        placeholderName: 'દા.ત. રાજ શર્મા',
-        placeholderMobile: 'દા.ત. 9876543210',
-        placeholderAddress: 'શેરી, શહેર, પિનકોડ',
-        placeholderAge: 'દા.ત. 30',
-        placeholderWeight: 'દા.ત. 75',
-        cardTitle1: 'વજન ઘટાડવાનો પાઉડર',
-        cardSub1: 'કુદરતી આયુર્વેદિક વેલનેસ ફોર્મ્યુલા',
-        cardBadge1: '100% કુદરતી',
-        cardTitle2: 'સાંધાના દુખાવાનો પાઉડર',
-        cardSub2: 'આયુર્વેદિક સાંધા સપોર્ટ ફોર્મ્યુલા',
-        cardBadge2: '100% આયુર્વેદિક'
+        navBenefits: 'લાભો', navIngredients: 'ઘટકો', navHowto: 'ઉપયોગ કેવી રીતે કરો', navShop: 'હવે ખરીદો',
+        heroBadge: '100% કુદરતી', heroSubtitle: 'ધ ગ્રીનહાઉસ', orderNow: 'હવે ખરીદો', learnMore: 'વધુ જાણો',
+        stat1: 'આયુર્વેદિક જડીબુટ્ટીઓ', stat3: 'કુદરતી', addToCart: 'કાર્ટમાં ઉમેરો', perPack: '/ પેક',
+        safeTag: 'શુદ્ધ અને સુરક્ષિત', noSideTag: 'કોઈ આડઅસર નહીં', freeShipping: '₹999થી વધુના ઓર્ડર પર મફત શિપિંગ',
+        footerHome: 'હોમ', footerTagline: 'આયુર્વેદને પુનર્જીવિત કરવું', modalTitle: 'તમારો ઓર્ડર આપો',
+        modalSubPrefix: 'ઓર્ડર કરવા માટે વિગતો ભરો ', modalSubSuffix: '। અમે WhatsApp દ્વારા પુષ્ટિ કરીશું।',
+        labelFullName: 'પૂરું નામ', labelMobile: 'મોબાઇલ નંબર', labelAddress: 'ડિલિવરી સરનામું', labelAge: 'ઉંમર (વર્ષ)',
+        labelQty: 'જથ્થો', buyNow: 'હવે ખરીદો', confirmOrder: 'ઓર્ડર કન્ફર્મ કરો',
+        placeholderName: 'દા.ત. રાજ શર્મા', placeholderMobile: 'દા.ત. 9876543210',
+        placeholderAddress: 'શેરી, શહેર, પિનકોડ', placeholderAge: 'દા.ત. 30',
+        cardTitle0: 'પાચનમિત્ર ચૂર્ણ', cardSub0: 'આયુર્વેદિક પાચન ફોર્મ્યુલા', cardBadge0: '100% કુદરતી',
+        cardTitle1: 'સાંધાના દુખાવાનો પાઉડર', cardSub1: 'આયુર્વેદિક સાંધા સપોર્ટ ફોર્મ્યુલા', cardBadge1: '100% આયુર્વેદિક',
+        cardTitle2: 'ગ્રોથ હેર ઓઇલ', cardSub2: 'આયુર્વેદિક વાળ વૃદ્ધિ ફોર્મ્યુલા', cardBadge2: '100% આયુર્વેદિક',
+        cardTitle3: 'આમળા સાબુ', cardSub3: 'કુદરતી હેરવોશ સાબુ', cardBadge3: 'હેન્ડમેડ',
+        cardTitle4: 'મુલતાની માટી સાબુ', cardSub4: 'ઊંડી સફાઈ અને કુદરતી ચમક માટે', cardBadge4: 'હેન્ડમેડ',
+        cardTitle5: 'લીમડો સાબુ', cardSub5: 'એન્ટી બેક્ટેરિયલ અને એન્ટી ફંગલ', cardBadge5: 'હેન્ડમેડ'
       }
     };
 
-    /* ═══════════════════════════════════════════════════════════
-       PRODUCT DATA — separate content per product and per language
-    ═══════════════════════════════════════════════════════════ */
     const productData = {
-      weightLoss: {
+      pachanmitra: {
         en: {
-          name: 'Weight Loss',
-          type: 'Powder',
-          fullName: 'Greenhouse Weight Loss Powder',
-          tagline: 'Natural Ayurvedic Wellness Formula',
-          description: 'Harness the power of ancient Ayurvedic herbs to support healthy weight management, boost metabolism, and improve digestion — all naturally.',
-          price: 699,
-          herbsCount: 5,
-          herbsLabel: 'Potent Herbs',
-          benefitsLabel: 'Why Choose Greenhouse',
-          benefitsTitle: 'Wellness in Every Spoon',
-          benefitsDesc: 'Formulated with time‑tested Ayurvedic ingredients to support your wellness journey.',
-          benefits: [
-            { icon: 'fas fa-weight-scale', title: 'Healthy Weight Management', desc: 'Supports natural weight loss without harsh chemicals.' },
-            { icon: 'fas fa-fire', title: 'Boosts Metabolism', desc: "Helps ignite your body's natural fat‑burning engine." },
-            { icon: 'fas fa-stomach', title: 'Improves Digestion', desc: 'Supports a healthy gut and better nutrient absorption.' },
-            { icon: 'fas fa-wind', title: 'Reduces Bloating', desc: 'Helps ease gas and abdominal discomfort naturally.' },
-            { icon: 'fas fa-droplet', title: 'Promotes Detoxification', desc: "Assists your body's natural cleansing processes." }
-          ],
-          ingLabel: 'Power of Ayurveda',
-          ingTitle: 'Our Ingredients',
-          ingDesc: 'Five potent herbs, carefully sourced and blended for maximum benefit.',
-          ingredients: [
-            { name: 'Methi', sub: 'Fenugreek', desc: 'Supports metabolism & helps curb appetite', emoji: '🌿' },
-            { name: 'Jeera', sub: 'Cumin Seeds', desc: 'Improves digestion & reduces bloating', emoji: '🧄' },
-            { name: 'Ajwain', sub: 'Carom Seeds', desc: 'Relieves gas & supports digestion', emoji: '🌾' },
-            { name: 'Saunf', sub: 'Fennel Seeds', desc: 'Helps reduce water retention', emoji: '🌸' },
-            { name: 'Dalchini', sub: 'Cinnamon', desc: 'Boosts metabolism & helps manage weight', emoji: '🪵' }
-          ],
-          howLabel: 'Simple & Effective',
-          howTitle: 'How to Use',
-          howDesc: 'Incorporate Greenhouse Weight Loss Powder into your daily routine.',
-          steps: [
-            { num: '1', title: 'Take 1 Spoon', desc: 'Measure one full spoon (approx. 5g) of the powder.' },
-            { num: '2', title: 'Mix with Warm Water', desc: 'Stir into a glass of warm water or your favourite beverage.' },
-            { num: '3', title: 'Drink Twice Daily', desc: 'Enjoy once in the morning and once in the evening.' },
-            { num: '4', title: 'Stay Consistent', desc: 'For best results, use regularly for at least 1 month.' }
-          ],
-          resultBig: '2–3 kg',
-          resultLabel: 'Average weight loss in 1 month*',
-          resultDesc: 'Our customers have seen remarkable results when combined with a balanced lifestyle. Greenhouse is crafted to support your goals — naturally and safely.',
-          resultBadges: ['100% Herbal Product', 'No Side Effects', 'Plant‑Based Ingredients', 'Pure & Safe'],
-          ctaTitle: 'Start Your Wellness Journey Today',
-          ctaDesc: 'Join thousands of satisfied customers who have embraced a healthier lifestyle with Greenhouse.'
+          name: 'Pachanmitra', type: 'Churna', fullName: 'Greenhouse Pachanmitra Churna',
+          tagline: 'Ayurvedic Digestive Wellness Formula', price: 399,
+          description: 'A traditional Ayurvedic blend designed to support healthy digestion, relieve gas, acidity, and constipation, keeping your stomach light and comfortable.',
+          herbsCount: 9, herbsLabel: 'Ayurvedic Herbs', benefitsLabel: 'Power of Ayurveda', benefitsTitle: 'Healthy Digestion, Happy Life', benefitsDesc: 'Formulated to relieve gas, acidity, and constipation while promoting overall gut health.',
+          benefits: [{ icon: 'fas fa-wind', title: 'Relieves Gas', desc: 'Helps relieve gas and bloating naturally.' }, { icon: 'fas fa-fire', title: 'Reduces Acidity', desc: 'Helps reduce acidity and stomach burning.' }, { icon: 'fas fa-toilet', title: 'Relieves Constipation', desc: 'Supports relief from constipation issues.' }, { icon: 'fas fa-stomach', title: 'Healthy Digestion', desc: 'Helps maintain a healthy digestive system.' }, { icon: 'fas fa-feather', title: 'Lightens Stomach', desc: 'Reduces bloating and keeps the stomach light and comfortable.' }],
+          ingLabel: 'Power of Ayurveda', ingTitle: 'Our Ingredients', ingDesc: 'Nine potent Ayurvedic ingredients blended for optimal digestive health.',
+          ingredients: [{ name: 'Variyali', sub: 'Fennel Seeds', desc: 'Helps relieve gas and bloating.', emoji: '🌿' }, { name: 'Sunth', sub: 'Dry Ginger', desc: 'Aids in digestion and reduces acidity.', emoji: '🫚' }, { name: 'Sanchal', sub: 'Black Salt', desc: 'Helps improve digestion and electrolyte balance.', emoji: '🧂' }, { name: 'Hing', sub: 'Asafoetida', desc: 'Relieves gas and abdominal discomfort.', emoji: '🧄' }, { name: 'Kalu Mithu', sub: 'Black Salt', desc: 'Supports digestion and reduces bloating.', emoji: '🧂' }, { name: 'Dhana', sub: 'Coriander Seeds', desc: 'Helps cool the body and aid digestion.', emoji: '🌱' }, { name: 'Harde', sub: 'Harad', desc: 'Supports regular bowel movements.', emoji: '🌰' }, { name: 'Amla', sub: 'Indian Gooseberry', desc: 'Rich in Vitamin C, supports gut health.', emoji: '🟢' }, { name: 'Mithi Sakar', sub: 'Sugar', desc: 'Provides a sweet taste and energy.', emoji: '🍬' }],
+          howLabel: 'Simple & Effective', howTitle: 'How to Use', howDesc: 'Incorporate Greenhouse Pachanmitra Churna into your daily routine.',
+          steps: [{ num: '1', title: 'Take 1 Spoon', desc: 'Measure one full spoon (approx. 5g) of the powder.' }, { num: '2', title: 'Mix with Warm Water', desc: 'Stir into a glass of warm water or your favourite beverage.' }, { num: '3', title: 'Drink Twice Daily', desc: 'Enjoy once in the morning and once in the evening.' }, { num: '4', title: 'Stay Consistent', desc: 'For best results, use regularly for at least 1 month.' }],
+          resultBig: '100%', resultLabel: 'Ayurvedic & Natural Formula', resultDesc: 'A traditional Ayurvedic blend designed to support healthy digestion and keep your stomach light and comfortable.', resultBadges: ['Relieves Gas', 'Reduces Acidity', 'Relieves Constipation', 'Healthy Digestion'],
+          ctaTitle: 'Start Your Wellness Journey Today', ctaDesc: 'Join thousands of satisfied customers who have embraced a healthier lifestyle with Greenhouse.'
         },
-        hi: {
-          name: 'वजन घटाने',
-          type: 'पाउडर',
-          fullName: 'ग्रीनहाउस वजन घटाने का पाउडर',
-          tagline: 'प्राकृतिक आयुर्वेदिक वेलनेस फॉर्मूला',
-          description: 'प्राचीन आयुर्वेदिक जड़ी-बूटियों की शक्ति का उपयोग करें जो स्वस्थ वजन प्रबंधन, चयापचय को बढ़ावा देने और पाचन में सुधार करने में सहायता करती हैं — पूरी तरह से प्राकृतिक।',
-          price: 699,
-          herbsCount: 5,
-          herbsLabel: 'शक्तिशाली जड़ी-बूटियाँ',
-          benefitsLabel: 'ग्रीनहाउस क्यों चुनें',
-          benefitsTitle: 'हर चम्मच में वेलनेस',
-          benefitsDesc: 'आपकी वेलनेस यात्रा को समर्थन देने के लिए समय-परीक्षित आयुर्वेदिक सामग्री के साथ तैयार किया गया।',
-          benefits: [
-            { icon: 'fas fa-weight-scale', title: 'स्वस्थ वजन प्रबंधन', desc: 'हानिकारक रसायनों के बिना प्राकृतिक वजन घटाने में सहायता करता है।' },
-            { icon: 'fas fa-fire', title: 'चयापचय को बढ़ावा देता है', desc: 'आपके शरीर के प्राकृतिक वसा-जलने वाले इंजन को प्रज्वलित करने में मदद करता है।' },
-            { icon: 'fas fa-stomach', title: 'पाचन में सुधार करता है', desc: 'स्वस्थ आंत और बेहतर पोषक तत्व अवशोषण का समर्थन करता है।' },
-            { icon: 'fas fa-wind', title: 'सूजन कम करता है', desc: 'गैस और पेट की असुविधा को प्राकृतिक रूप से कम करने में मदद करता है।' },
-            { icon: 'fas fa-droplet', title: 'डिटॉक्स को बढ़ावा देता है', desc: 'आपके शरीर की प्राकृतिक सफाई प्रक्रियाओं में सहायता करता है।' }
-          ],
-          ingLabel: 'आयुर्वेद की शक्ति',
-          ingTitle: 'हमारी सामग्री',
-          ingDesc: 'पाँच शक्तिशाली जड़ी-बूटियाँ, सावधानीपूर्वक स्रोत और अधिकतम लाभ के लिए मिश्रित।',
-          ingredients: [
-            { name: 'मेथी', sub: 'Fenugreek', desc: 'चयापचय का समर्थन करता है और भूख को नियंत्रित करने में मदद करता है', emoji: '🌿' },
-            { name: 'जीरा', sub: 'Cumin Seeds', desc: 'पाचन में सुधार करता है और सूजन कम करता है', emoji: '🧄' },
-            { name: 'अजवाइन', sub: 'Carom Seeds', desc: 'गैस से राहत देता है और पाचन का समर्थन करता है', emoji: '🌾' },
-            { name: 'सौंफ', sub: 'Fennel Seeds', desc: 'पानी प्रतिधारण को कम करने में मदद करता है', emoji: '🌸' },
-            { name: 'दालचीनी', sub: 'Cinnamon', desc: 'चयापचय को बढ़ावा देता है और वजन प्रबंधन में मदद करता है', emoji: '🪵' }
-          ],
-          howLabel: 'सरल और प्रभावी',
-          howTitle: 'उपयोग कैसे करें',
-          howDesc: 'ग्रीनहाउस वजन घटाने के पाउडर को अपनी दिनचर्या में शामिल करें।',
-          steps: [
-            { num: '1', title: '1 चम्मच लें', desc: 'पाउडर का एक पूरा चम्मच (लगभग 5 ग्राम) मापें।' },
-            { num: '2', title: 'गर्म पानी में मिलाएं', desc: 'एक गिलास गर्म पानी या अपने पसंदीदा पेय में मिलाएं।' },
-            { num: '3', title: 'दिन में दो बार पिएं', desc: 'सुबह और शाम एक बार पिएं।' },
-            { num: '4', title: 'नियमित रहें', desc: 'सर्वोत्तम परिणामों के लिए, कम से कम 1 महीने तक नियमित रूप से उपयोग करें।' }
-          ],
-          resultBig: '2–3 किग्रा',
-          resultLabel: '1 महीने में औसत वजन घटाना*',
-          resultDesc: 'हमारे ग्राहकों ने संतुलित जीवनशैली के साथ संयोजन में उल्लेखनीय परिणाम देखे हैं। ग्रीनहाउस आपके लक्ष्यों का समर्थन करने के लिए तैयार किया गया है — प्राकृतिक और सुरक्षित रूप से।',
-          resultBadges: ['100% हर्बल उत्पाद', 'कोई साइड इफेक्ट नहीं', 'पौधे-आधारित सामग्री', 'शुद्ध और सुरक्षित'],
-          ctaTitle: 'आज ही अपनी वेलनेस यात्रा शुरू करें',
-          ctaDesc: 'हजारों संतुष्ट ग्राहकों के साथ जुड़ें जिन्होंने ग्रीनहाउस के साथ एक स्वस्थ जीवनशैली अपनाई है।'
-        },
-        gu: {
-          name: 'વજન ઘટાડવું',
-          type: 'પાઉડર',
-          fullName: 'ગ્રીનહાઉસ વજન ઘટાડવાનો પાઉડર',
-          tagline: 'કુદરતી આયુર્વેદિક વેલનેસ ફોર્મ્યુલા',
-          description: 'પ્રાચીન આયુર્વેદિક જડીબુટ્ટીઓની શક્તિનો ઉપયોગ કરો જે સ્વસ્થ વજન વ્યવસ્થાપન, ચયાપચયને વેગ આપવા અને પાચન સુધારવામાં મદદ કરે છે — સંપૂર્ણપણે કુદરતી રીતે.',
-          price: 699,
-          herbsCount: 5,
-          herbsLabel: 'શક્તિશાળી જડીબુટ્ટીઓ',
-          benefitsLabel: 'ગ્રીનહાઉસ શા માટે પસંદ કરો',
-          benefitsTitle: 'દરેક ચમચીમાં વેલનેસ',
-          benefitsDesc: 'તમારી વેલનેસ યાત્રાને ટેકો આપવા માટે સમય-પરીક્ષિત આયુર્વેદિક ઘટકો સાથે તૈયાર કરવામાં આવ્યું છે.',
-          benefits: [
-            { icon: 'fas fa-weight-scale', title: 'સ્વસ્થ વજન વ્યવસ્થાપન', desc: 'હાનિકારક રસાયણો વિના કુદરતી વજન ઘટાડવામાં મદદ કરે છે.' },
-            { icon: 'fas fa-fire', title: 'ચયાપચયને વેગ આપે છે', desc: 'તમારા શરીરના કુદરતી ચરબી-બર્નિંગ એન્જિનને પ્રજ્વલિત કરવામાં મદદ કરે છે.' },
-            { icon: 'fas fa-stomach', title: 'પાચન સુધારે છે', desc: 'સ્વસ્થ આંતરડા અને વધુ સારા પોષક તત્વોના શોષણને ટેકો આપે છે.' },
-            { icon: 'fas fa-wind', title: 'ફૂલેલું ઘટાડે છે', desc: 'ગેસ અને પેટની અગવડતાને કુદરતી રીતે દૂર કરવામાં મદદ કરે છે.' },
-            { icon: 'fas fa-droplet', title: 'ડિટોક્સને પ્રોત્સાહન આપે છે', desc: 'તમારા શરીરની કુદરતી સફાઈ પ્રક્રિયાઓમાં સહાય કરે છે.' }
-          ],
-          ingLabel: 'આયુર્વેદની શક્તિ',
-          ingTitle: 'અમારા ઘટકો',
-          ingDesc: 'પાંચ શક્તિશાળી જડીબુટ્ટીઓ, કાળજીપૂર્વક સ્ત્રોત અને મહત્તમ લાભ માટે મિશ્રિત.',
-          ingredients: [
-            { name: 'મેથી', sub: 'Fenugreek', desc: 'ચયાપચયને ટેકો આપે છે અને ભૂખને નિયંત્રિત કરવામાં મદદ કરે છે', emoji: '🌿' },
-            { name: 'જીરું', sub: 'Cumin Seeds', desc: 'પાચન સુધારે છે અને ફૂલેલું ઘટાડે છે', emoji: '🧄' },
-            { name: 'અજમો', sub: 'Carom Seeds', desc: 'ગેસમાં રાહત આપે છે અને પાચનને ટેકો આપે છે', emoji: '🌾' },
-            { name: 'સૌંફ', sub: 'Fennel Seeds', desc: 'પાણીની જાળવણી ઘટાડવામાં મદદ કરે છે', emoji: '🌸' },
-            { name: 'દાલચીની', sub: 'Cinnamon', desc: 'ચયાપચયને વેગ આપે છે અને વજન વ્યવસ્થાપનમાં મદદ કરે છે', emoji: '🪵' }
-          ],
-          howLabel: 'સરળ અને અસરકારક',
-          howTitle: 'ઉપયોગ કેવી રીતે કરવો',
-          howDesc: 'ગ્રીનહાઉસ વજન ઘટાડવાના પાઉડરને તમારી દિનચર્યામાં સામેલ કરો.',
-          steps: [
-            { num: '1', title: '1 ચમચી લો', desc: 'પાઉડરનો એક સંપૂર્ણ ચમચી (આશરે 5 ગ્રામ) માપો.' },
-            { num: '2', title: 'ગરમ પાણીમાં મિક્સ કરો', desc: 'એક ગ્લાસ ગરમ પાણી અથવા તમારા મનપસંદ પીણામાં મિક્સ કરો.' },
-            { num: '3', title: 'દિવસમાં બે વાર પીવો', desc: 'સવારે અને સાંજે એક વાર પીવો.' },
-            { num: '4', title: 'સુસંગત રહો', desc: 'શ્રેષ્ઠ પરિણામો માટે, ઓછામાં ઓછા 1 મહિના સુધી નિયમિત ઉપયોગ કરો.' }
-          ],
-          resultBig: '2–3 કિગ્રા',
-          resultLabel: '1 મહિનામાં સરેરાશ વજન ઘટાડો*',
-          resultDesc: 'અમારા ગ્રાહકોએ સંતુલિત જીવનશૈલી સાથે સંયોજનમાં નોંધપાત્ર પરિણામો જોયા છે. ગ્રીનહાઉસ તમારા લક્ષ્યોને ટેકો આપવા માટે તૈયાર કરવામાં આવ્યું છે — કુદરતી અને સુરક્ષિત રીતે.',
-          resultBadges: ['100% હર્બલ ઉત્પાદન', 'કોઈ આડઅસર નહીં', 'પ્લાન્ટ-આધારિત ઘટકો', 'શુદ્ધ અને સુરક્ષિત'],
-          ctaTitle: 'આજે જ તમારી વેલનેસ યાત્રા શરૂ કરો',
-          ctaDesc: 'હજારો સંતુષ્ટ ગ્રાહકો સાથે જોડાઓ જેમણે ગ્રીનહાઉસ સાથે સ્વસ્થ જીવનશૈલી અપનાવી છે.'
-        }
+        hi: { name: 'पाचनमित्र', type: 'चूर्ण', fullName: 'ग्रीनहाउस पाचनमित्र चूर्ण', tagline: 'आयुर्वेदिक पाचन वेलनेस फॉर्मूला', price: 399, description: 'गैस, एसिडिटी और कब्ज से राहत दिलाने और पाचन को स्वस्थ रखने में मदद करता है।', herbsCount: 9, herbsLabel: 'आयुर्वेदिक जड़ी-बूटियाँ', benefitsLabel: 'आयुर्वेद की शक्ति', benefitsTitle: 'स्वस्थ पाचन, खुशहाल जीवन', benefitsDesc: 'गैस, एसिडिटी और कब्ज से राहत दिलाने के लिए तैयार किया गया।', benefits: [{ icon: 'fas fa-wind', title: 'गैस से राहत', desc: 'गैस और सूजन से राहत दिलाता है।' }, { icon: 'fas fa-fire', title: 'एसिडिटी कम करता है', desc: 'एसिडिटी कम करने में मदद करता है।' }, { icon: 'fas fa-toilet', title: 'कब्ज में राहत', desc: 'कब्ज से राहत का समर्थन करता है।' }, { icon: 'fas fa-stomach', title: 'स्वस्थ पाचन', desc: 'पाचन तंत्र बनाए रखने में मदद करता है।' }, { icon: 'fas fa-feather', title: 'पेट को हल्का रखता है', desc: 'पेट को हल्का और आरामदायक रखता है।' }], ingLabel: 'आयुर्वेद की शक्ति', ingTitle: 'हमारी सामग्री', ingDesc: 'नौ शक्तिशाली आयुर्वेदिक सामग्री मिश्रित।', ingredients: [{ name: 'वरियाली', sub: 'सौंफ', desc: 'गैस से राहत दिलाता है।', emoji: '🌿' }, { name: 'सोंठ', sub: 'सूखी अदरक', desc: 'पाचन में सहायता करता है।', emoji: '🫚' }, { name: 'संचल', sub: 'काला नमक', desc: 'पाचन में सुधार करता है।', emoji: '🧂' }, { name: 'हींग', sub: 'हींग', desc: 'गैस से राहत देता है।', emoji: '🧄' }, { name: 'काला नमक', sub: 'काला नमक', desc: 'पाचन का समर्थन करता है।', emoji: '🧂' }, { name: 'धनिया', sub: 'धनिया', desc: 'पाचन में मदद करता है।', emoji: '🌱' }, { name: 'हरड़', sub: 'हरड़', desc: 'मल त्याग का समर्थन करता है।', emoji: '🌰' }, { name: 'आंवला', sub: 'आंवला', desc: 'पेट के स्वास्थ्य का समर्थन करता है।', emoji: '🟢' }, { name: 'मीठी साखर', sub: 'चीनी', desc: 'ऊर्जा प्रदान करता है।', emoji: '🍬' }], howLabel: 'सरल और प्रभावी', howTitle: 'उपयोग कैसे करें', howDesc: 'अपनी दिनचर्या में शामिल करें।', steps: [{ num: '1', title: '1 चम्मच लें', desc: 'पाउडर का एक चम्मच मापें।' }, { num: '2', title: 'गर्म पानी में मिलाएं', desc: 'एक गिलास गर्म पानी में मिलाएं।' }, { num: '3', title: 'दिन में दो बार पिएं', desc: 'सुबह और शाम पिएं।' }, { num: '4', title: 'नियमित रहें', desc: 'कम से कम 1 महीने तक उपयोग करें।' }], resultBig: '100%', resultLabel: 'आयुर्वेदिक और प्राकृतिक फॉर्मूला', resultDesc: 'स्वस्थ पाचन का समर्थन करने और पेट को हल्का रखने के लिए डिज़ाइन किया गया है।', resultBadges: ['गैस से राहत', 'एसिडिटी कम करता है', 'कब्ज में राहत', 'स्वस्थ पाचन'], ctaTitle: 'आज ही अपनी वेलनेस यात्रा शुरू करें', ctaDesc: 'हजारों संतुष्ट ग्राहकों के साथ जुड़ें।' },
+        gu: { name: 'પાચનમિત્ર', type: 'ચૂર્ણ', fullName: 'ગ્રીનહાઉસ પાચનમિત્ર ચૂર્ણ', tagline: 'આયુર્વેદિક પાચન ફોર્મ્યુલા', price: 399, description: 'ગેસ, એસિડિટી અને કબજિયાતની સમસ્યામાં રાહત આપીને પાચનક્રિયાને સ્વસ્થ રાખવામાં મદદરૂપ થાય છે.', herbsCount: 9, herbsLabel: 'આયુર્વેદિક જડીબુટ્ટીઓ', benefitsLabel: 'આયુર્વેદની શક્તિ', benefitsTitle: 'સ્વસ્થ પાચન, ખુશહાલ જીવન', benefitsDesc: 'ગેસ, એસિડિટી અને કબજિયાતમાં રાહત આપવા માટે તૈયાર કરવામાં આવ્યું છે.', benefits: [{ icon: 'fas fa-wind', title: 'ગેસની સમસ્યામાં રાહત', desc: 'ગેસ અને પેટ ફૂલવાની સમસ્યામાં રાહત આપે છે.' }, { icon: 'fas fa-fire', title: 'એસિડિટી ઘટાડે', desc: 'એસિડિટી ઘટાડવામાં મદદરૂપ.' }, { icon: 'fas fa-toilet', title: 'કબજિયાતમાં રાહત', desc: 'કબજિયાતની સમસ્યામાં રાહત મેળવવામાં સહાયક.' }, { icon: 'fas fa-stomach', title: 'સ્વસ્થ પાચન', desc: 'પાચનક્રિયાને સ્વસ્થ રાખવામાં મદદરૂપ.' }, { icon: 'fas fa-feather', title: 'પેટને હળવું રાખે', desc: 'પેટનો ભારેપો ઘટાડવામાં સહાયક.' }], ingLabel: 'આયુર્વેદની શક્તિ', ingTitle: 'અમારા ઘટકો', ingDesc: 'શ્રેષ્ઠ પાચન સ્વાસ્થ્ય માટે નવ શક્તિશાળી આયુર્વેદિક ઘટકો.', ingredients: [{ name: 'વરિયાળી', sub: 'Fennel Seeds', desc: 'ગેસમાં રાહત આપે છે.', emoji: '🌿' }, { name: 'સૂંઠ', sub: 'Dry Ginger', desc: 'પાચનમાં મદદ કરે છે.', emoji: '🫚' }, { name: 'સંચળ', sub: 'Black Salt', desc: 'પાચન સુધારવામાં મદદ કરે છે.', emoji: '🧂' }, { name: 'હિંગ', sub: 'Asafoetida', desc: 'ગેસમાં રાહત આપે છે.', emoji: '🧄' }, { name: 'કાળું મીઠું', sub: 'Black Salt', desc: 'ફૂલેલું ઘટાડે છે.', emoji: '🧂' }, { name: 'ધાણા', sub: 'Coriander Seeds', desc: 'શરીરને ઠંડું રાખવામાં મદદ કરે છે.', emoji: '🌱' }, { name: 'હરડે', sub: 'Harad', desc: 'નિયમિત શૌચક્રિયાને ટેકો આપે છે.', emoji: '🌰' }, { name: 'આમળા', sub: 'Indian Gooseberry', desc: 'આંતરડાના સ્વાસ્થ્યને ટેકો આપે છે.', emoji: '🟢' }, { name: 'મીઠી સાકર', sub: 'Sugar', desc: 'ઊર્જા પ્રદાન કરે છે.', emoji: '🍬' }], howLabel: 'સરળ અને અસરકારક', howTitle: 'ઉપયોગ કેવી રીતે કરવો', howDesc: 'તમારી દિનચર્યામાં સામેલ કરો.', steps: [{ num: '1', title: '1 ચમચી લો', desc: 'પાઉડરનો એક ચમચી માપો.' }, { num: '2', title: 'ગરમ પાણીમાં મિક્સ કરો', desc: 'એક ગ્લાસ ગરમ પાણીમાં મિક્સ કરો.' }, { num: '3', title: 'દિવસમાં બે વાર પીવો', desc: 'સવારે અને સાંજે પીવો.' }, { num: '4', title: 'સુસંગત રહો', desc: 'ઓછામાં ઓછા 1 મહિના સુધી ઉપયોગ કરો.' }], resultBig: '100%', resultLabel: 'આયુર્વેદિક અને કુદરતી ફોર્મ્યુલા', resultDesc: 'પાચનક્રિયાને સ્વસ્થ રાખવા માટે રચાયેલું મિશ્રણ.', resultBadges: ['ગેસની સમસ્યામાં રાહત', 'એસિડિટી ઘટાડે', 'કબજિયાતમાં રાહત', 'સ્વસ્થ પાચન'], ctaTitle: 'આજે જ તમારી વેલનેસ યાત્રા શરૂ કરો', ctaDesc: 'હજારો સંતુષ્ટ ગ્રાહકો સાથે જોડાઓ.' }
       },
       jointPain: {
-        en: {
-          name: 'Joint Pain',
-          type: 'Powder',
-          fullName: 'Greenhouse Joint Pain Powder',
-          tagline: 'Ayurvedic Joint Support Formula',
-          description: 'A time-tested Ayurvedic blend that helps relieve joint pain, reduce stiffness & swelling, and support stronger, more flexible joints — naturally.',
-          price: 499,
-          herbsCount: 5,
-          herbsLabel: 'Potent Herbs',
-          benefitsLabel: 'Power of Natural Ingredients',
-          benefitsTitle: 'Strength in Every Spoon',
-          benefitsDesc: 'Formulated with 5 potent Ayurvedic herbs for joint pain, stiffness & mobility support.',
-          benefits: [
-            { icon: 'fas fa-hand-holding-medical', title: 'Relieves Joint Pain', desc: 'Helps reduce pain in knees, shoulders, back & joints.' },
-            { icon: 'fas fa-wind', title: 'Reduces Stiffness & Swelling', desc: 'Helps ease stiffness and swelling in the joints.' },
-            { icon: 'fas fa-person-walking', title: 'Improves Mobility', desc: 'Supports flexibility and daily movement.' },
-            { icon: 'fas fa-bone', title: 'Strengthens Bones & Joints', desc: 'Nourishes bones and helps keep joints strong.' },
-            { icon: 'fas fa-leaf', title: '100% Ayurvedic & Natural', desc: 'Pure herbal formula with no harmful chemicals.' }
-          ],
-          ingLabel: 'Power of Ayurveda',
-          ingTitle: 'Our Ingredients',
-          ingDesc: 'Five potent herbs, carefully sourced and blended for maximum joint support.',
-          ingredients: [
-            { name: 'Shallaki', sub: 'Boswellia', desc: 'Helps reduce inflammation and pain in joints.', emoji: '🪵' },
-            { name: 'Guggul', sub: 'Guggul', desc: 'Supports relief from joint pain and stiffness.', emoji: '🌰' },
-            { name: 'Sunth', sub: 'Dry Ginger', desc: 'Reduces swelling and improves digestion.', emoji: '🫚' },
-            { name: 'Had Jod', sub: 'Had Jod', desc: 'Strengthens bones and joints.', emoji: '🌿' },
-            { name: 'Ashwagandha', sub: 'Ashwagandha', desc: 'Boosts strength and stamina, nourishes joints.', emoji: '🌱' }
-          ],
-          howLabel: 'Simple & Effective',
-          howTitle: 'How to Use',
-          howDesc: 'Incorporate Greenhouse Joint Pain Powder into your daily routine.',
-          steps: [
-            { num: '1', title: 'Morning & Evening', desc: 'Take 1 spoon (approx. 5g) of the powder.' },
-            { num: '2', title: 'With Warm Water', desc: 'Take with warm water, warm milk or honey.' },
-            { num: '3', title: 'After Meals', desc: 'Take after meals or as advised by an Ayurvedic doctor.' },
-            { num: '4', title: 'Stay Consistent', desc: 'For best results, use regularly for at least 1 month.' }
-          ],
-          resultBig: '100%',
-          resultLabel: 'Ayurvedic & Natural Formula',
-          resultDesc: 'A natural way to stronger joints & better movement. Safe, effective and free from added preservatives and chemicals.',
-          resultBadges: ['No Added Preservatives', 'Chemical Free', 'Safe & Effective', 'No Side Effects'],
-          ctaTitle: 'Say Goodbye to Joint Pain Today',
-          ctaDesc: 'Experience the natural relief of Ayurveda with Greenhouse Joint Pain Powder.'
-        },
-        hi: {
-          name: 'जोड़ों का दर्द',
-          type: 'पाउडर',
-          fullName: 'ग्रीनहाउस जॉइंट पेन पाउडर',
-          tagline: 'आयुर्वेदिक जोड़ समर्थन फॉर्मूला',
-          description: 'एक समय-परीक्षित आयुर्वेदिक मिश्रण जो जोड़ों के दर्द से राहत दिलाने, जकड़न और सूजन कम करने, और मजबूत, अधिक लचीले जोड़ों का समर्थन करने में मदद करता है — प्राकृतिक रूप से।',
-          price: 499,
-          herbsCount: 5,
-          herbsLabel: 'शक्तिशाली जड़ी-बूटियाँ',
-          benefitsLabel: 'प्राकृतिक सामग्री की शक्ति',
-          benefitsTitle: 'हर चम्मच में शक्ति',
-          benefitsDesc: 'जोड़ों के दर्द, जकड़न और गतिशीलता समर्थन के लिए 5 शक्तिशाली आयुर्वेदिक जड़ी-बूटियों के साथ तैयार किया गया।',
-          benefits: [
-            { icon: 'fas fa-hand-holding-medical', title: 'जोड़ों के दर्द से राहत', desc: 'घुटनों, कंधों, पीठ और जोड़ों के दर्द को कम करने में मदद करता है।' },
-            { icon: 'fas fa-wind', title: 'जकड़न और सूजन कम करता है', desc: 'जोड़ों की जकड़न और सूजन को कम करने में मदद करता है।' },
-            { icon: 'fas fa-person-walking', title: 'गतिशीलता में सुधार करता है', desc: 'लचीलेपन और दैनिक गति का समर्थन करता है।' },
-            { icon: 'fas fa-bone', title: 'हड्डियों और जोड़ों को मजबूत बनाता है', desc: 'हड्डियों को पोषण देता है और जोड़ों को मजबूत रखने में मदद करता है।' },
-            { icon: 'fas fa-leaf', title: '100% आयुर्वेदिक और प्राकृतिक', desc: 'कोई हानिकारक रसायन नहीं, शुद्ध हर्बल फॉर्मूला।' }
-          ],
-          ingLabel: 'आयुर्वेद की शक्ति',
-          ingTitle: 'हमारी सामग्री',
-          ingDesc: 'पाँच शक्तिशाली जड़ी-बूटियाँ, अधिकतम जोड़ समर्थन के लिए मिश्रित।',
-          ingredients: [
-            { name: 'शल्लाकी', sub: 'Boswellia', desc: 'जोड़ों की सूजन और दर्द को कम करने में मदद करता है।', emoji: '🪵' },
-            { name: 'गुग्गुल', sub: 'Guggul', desc: 'जोड़ों के दर्द और जकड़न से राहत में सहायक।', emoji: '🌰' },
-            { name: 'सोंठ', sub: 'Dry Ginger', desc: 'सूजन कम करता है और पाचन में सुधार करता है।', emoji: '🫚' },
-            { name: 'हड़जोड़', sub: 'Had Jod', desc: 'हड्डियों और जोड़ों को मजबूत बनाता है।', emoji: '🌿' },
-            { name: 'अश्वगंधा', sub: 'Ashwagandha', desc: 'शक्ति और स्टैमिना बढ़ाता है, जोड़ों को पोषण देता है।', emoji: '🌱' }
-          ],
-          howLabel: 'सरल और प्रभावी',
-          howTitle: 'उपयोग कैसे करें',
-          howDesc: 'ग्रीनहाउस जॉइंट पेन पाउडर को अपनी दिनचर्या में शामिल करें।',
-          steps: [
-            { num: '1', title: 'सुबह और शाम', desc: '1 चम्मच (लगभग 5 ग्राम) पाउडर लें।' },
-            { num: '2', title: 'गर्म पानी के साथ', desc: 'गर्म पानी, गर्म दूध या शहद के साथ लें।' },
-            { num: '3', title: 'भोजन के बाद', desc: 'भोजन के बाद लें या आयुर्वेदिक वैद्य की सलाह के अनुसार लें।' },
-            { num: '4', title: 'नियमित रहें', desc: 'सर्वोत्तम परिणामों के लिए, कम से कम 1 महीने तक नियमित रूप से उपयोग करें।' }
-          ],
-          resultBig: '100%',
-          resultLabel: 'आयुर्वेदिक और प्राकृतिक फॉर्मूला',
-          resultDesc: 'मजबूत जोड़ों और बेहतर गति का एक प्राकृतिक तरीका। सुरक्षित, प्रभावी और संरक्षक और रसायनों से मुक्त।',
-          resultBadges: ['कोई संरक्षक नहीं', 'रसायन मुक्त', 'सुरक्षित और प्रभावी', 'कोई साइड इफेक्ट नहीं'],
-          ctaTitle: 'आज ही जोड़ों के दर्द को अलविदा कहें',
-          ctaDesc: 'ग्रीनहाउस जॉइंट पेन पाउडर के साथ आयुर्वेद की प्राकृतिक राहत का अनुभव करें।'
-        },
-        gu: {
-          name: 'સાંધાનો દુખાવો',
-          type: 'પાઉડર',
-          fullName: 'ગ્રીનહાઉસ જોઈન્ટ પેન પાઉડર',
-          tagline: 'આયુર્વેદિક સાંધા સપોર્ટ ફોર્મ્યુલા',
-          description: 'આયુર્વેદિક સાંધાના પાવડર અસંતુલિત વાત દોષને લક્ષ્ય બનાવે છે જેથી બળતરા ઓછી થાય અને જડતા દૂર થાય. આ મિશ્રણ સાંધાના આરામ, લવચીકતા અને દૈનિક ગતિવિધિતાને ટેકો આપવા માટે બનાવવામાં આવેલ છે.',
-          price: 499,
-          herbsCount: 5,
-          herbsLabel: 'શક્તિશાળી જડીબુટ્ટીઓ',
-          benefitsLabel: 'કુદરતી ઘટકોની શક્તિ',
-          benefitsTitle: 'દરેક ચમચીમાં શક્તિ',
-          benefitsDesc: 'સાંધાના દુખાવા, જડતા અને ગતિશીલતા સપોર્ટ માટે 5 શક્તિશાળી આયુર્વેદિક જડીબુટ્ટીઓ સાથે તૈયાર કરવામાં આવ્યું છે.',
-          benefits: [
-            { icon: 'fas fa-hand-holding-medical', title: 'સાંધાના દુખાવામાં રાહત આપે', desc: 'ઘૂંટણ, ખભા, પીઠ અને સાંધાના દુખાવામાં રાહત આપે.' },
-            { icon: 'fas fa-wind', title: 'જડતા અને સોજામાં ઘટાડો કરે', desc: 'સાંધાની જડતા અને સોજો ઘટાડવામાં મદદ કરે.' },
-            { icon: 'fas fa-person-walking', title: 'લવચીકતા વધારવામાં મદદરૂપ', desc: 'લવચીકતા અને દૈનિક ગતિને ટેકો આપે.' },
-            { icon: 'fas fa-bone', title: 'હાડકા અને સાંધાને મજબૂત બનાવે', desc: 'હાડકાને પોષણ આપે અને સાંધાને મજબૂત રાખવામાં મદદ કરે.' },
-            { icon: 'fas fa-leaf', title: '100% આયુર્વેદિક અને કુદરતી', desc: 'કોઈ હાનિકારક રસાયણો નહીં, શુદ્ધ હર્બલ ફોર્મ્યુલા.' }
-          ],
-          ingLabel: 'આયુર્વેદની શક્તિ',
-          ingTitle: 'અમારા ઘટકો',
-          ingDesc: 'પાંચ શક્તિશાળી જડીબુટ્ટીઓ, મહત્તમ સાંધા સપોર્ટ માટે મિશ્રિત.',
-          ingredients: [
-            { name: 'શલ્લાકી', sub: 'Boswellia', desc: 'ઓજો અને બળતરા ઓછી કરવામાં મદદરૂપ', emoji: '🪵' },
-            { name: 'ગુગગુલ', sub: 'Guggul', desc: 'સાંધાના દુખાવામાં રાહત આપવા સહાયક', emoji: '🌰' },
-            { name: 'સૂંઠ', sub: 'Dry Ginger', desc: 'સોજો ઓછી કરે અને દળણ પદિશવામાં સુધારો', emoji: '🫚' },
-            { name: 'હરડે', sub: 'Had Jod', desc: 'હાડકા અને સાંધાને મજબૂત બનાવે', emoji: '🌿' },
-            { name: 'અશ્વગંધા', sub: 'Ashwagandha', desc: 'શક્તિ અને સ્ટેમિના વધારે છે, સાંધાને પોષણ આપે', emoji: '🌱' }
-          ],
-          howLabel: 'સરળ અને અસરકારક',
-          howTitle: 'ઉપયોગ કેવી રીતે કરવો',
-          howDesc: 'ગ્રીનહાઉસ જોઈન્ટ પેન પાઉડરને તમારી દિનચર્યામાં સામેલ કરો.',
-          steps: [
-            { num: '1', title: 'સવારે અને સાંજે', desc: '1 ચમચી (લગભગ 5 ગ્રામ) પાઉડર લો.' },
-            { num: '2', title: 'ગરમ પાણી સાથે', desc: 'ગરમ પાણી, ગરમ દૂધ અથવા મધ સાથે લો.' },
-            { num: '3', title: 'ભોજન પછી', desc: 'ભોજન પછી લો અથવા આયુર્વેદિક વૈદ્યની સલાહ મુજબ લો.' },
-            { num: '4', title: 'સુસંગત રહો', desc: 'શ્રેષ્ઠ પરિણામો માટે, ઓછામાં ઓછા 1 મહિના સુધી નિયમિત ઉપયોગ કરો.' }
-          ],
-          resultBig: '100%',
-          resultLabel: 'આયુર્વેદિક અને કુદરતી ફોર્મ્યુલા',
-          resultDesc: 'મજબૂત સાંધા અને સારી ગતિ માટે કુદરતી રીત. સુરક્ષિત, અસરકારક અને પ્રિઝર્વેટિવ્સ અને રસાયણોથી મુક્ત.',
-          resultBadges: ['કોઈ પ્રિઝર્વેટિવ્સ નહીં', 'રસાયણ મુક્ત', 'સુરક્ષિત અને અસરકારક', 'કોઈ આડઅસર નહીં'],
-          ctaTitle: 'આજે જ સાંધાના દુખાવાને અલવિદા કહો',
-          ctaDesc: 'ગ્રીનહાઉસ જોઈન્ટ પેન પાઉડર સાથે આયુર્વેદની કુદરતી રાહતનો અનુભવ કરો.'
-        }
+        en: { name: 'Joint Pain', type: 'Powder', fullName: 'Greenhouse Joint Pain Powder', tagline: 'Ayurvedic Joint Support Formula', price: 499, description: 'A time-tested Ayurvedic blend that helps relieve joint pain, reduce stiffness & swelling, and support stronger, more flexible joints — naturally.', herbsCount: 5, herbsLabel: 'Potent Herbs', benefitsLabel: 'Power of Natural Ingredients', benefitsTitle: 'Strength in Every Spoon', benefitsDesc: 'Formulated with 5 potent Ayurvedic herbs for joint pain, stiffness & mobility support.', benefits: [{ icon: 'fas fa-hand-holding-medical', title: 'Relieves Joint Pain', desc: 'Helps reduce pain in knees, shoulders, back & joints.' }, { icon: 'fas fa-wind', title: 'Reduces Stiffness & Swelling', desc: 'Helps ease stiffness and swelling in the joints.' }, { icon: 'fas fa-person-walking', title: 'Improves Mobility', desc: 'Supports flexibility and daily movement.' }, { icon: 'fas fa-bone', title: 'Strengthens Bones & Joints', desc: 'Nourishes bones and helps keep joints strong.' }, { icon: 'fas fa-leaf', title: '100% Ayurvedic & Natural', desc: 'Pure herbal formula with no harmful chemicals.' }], ingLabel: 'Power of Ayurveda', ingTitle: 'Our Ingredients', ingDesc: 'Five potent herbs, carefully sourced and blended for maximum joint support.', ingredients: [{ name: 'Shallaki', sub: 'Boswellia', desc: 'Helps reduce inflammation and pain in joints.', emoji: '🪵' }, { name: 'Guggul', sub: 'Guggul', desc: 'Supports relief from joint pain and stiffness.', emoji: '🌰' }, { name: 'Sunth', sub: 'Dry Ginger', desc: 'Reduces swelling and improves digestion.', emoji: '🫚' }, { name: 'Had Jod', sub: 'Had Jod', desc: 'Strengthens bones and joints.', emoji: '🌿' }, { name: 'Ashwagandha', sub: 'Ashwagandha', desc: 'Boosts strength and stamina, nourishes joints.', emoji: '🌱' }], howLabel: 'Simple & Effective', howTitle: 'How to Use', howDesc: 'Incorporate Greenhouse Joint Pain Powder into your daily routine.', steps: [{ num: '1', title: 'Morning & Evening', desc: 'Take 1 spoon (approx. 5g) of the powder.' }, { num: '2', title: 'With Warm Water', desc: 'Take with warm water, warm milk or honey.' }, { num: '3', title: 'After Meals', desc: 'Take after meals or as advised by an Ayurvedic doctor.' }, { num: '4', title: 'Stay Consistent', desc: 'For best results, use regularly for at least 1 month.' }], resultBig: '100%', resultLabel: 'Ayurvedic & Natural Formula', resultDesc: 'A natural way to stronger joints & better movement. Safe, effective and free from added preservatives and chemicals.', resultBadges: ['No Added Preservatives', 'Chemical Free', 'Safe & Effective', 'No Side Effects'], ctaTitle: 'Say Goodbye to Joint Pain Today', ctaDesc: 'Experience the natural relief of Ayurveda with Greenhouse Joint Pain Powder.' },
+        hi: { name: 'जोड़ों का दर्द', type: 'पाउडर', fullName: 'ग्रीनहाउस जॉइंट पेन पाउडर', tagline: 'आयुर्वेदिक जोड़ समर्थन फॉर्मूला', price: 499, description: 'जोड़ों के दर्द से राहत दिलाने में मदद करता है।', herbsCount: 5, herbsLabel: 'शक्तिशाली जड़ी-बूटियाँ', benefitsLabel: 'प्राकृतिक सामग्री की शक्ति', benefitsTitle: 'हर चम्मच में शक्ति', benefitsDesc: 'जोड़ों के दर्द के लिए 5 शक्तिशाली जड़ी-बूटियों के साथ तैयार किया गया।', benefits: [{ icon: 'fas fa-hand-holding-medical', title: 'जोड़ों के दर्द से राहत', desc: 'दर्द को कम करने में मदद करता है।' }, { icon: 'fas fa-wind', title: 'जकड़न और सूजन कम करता है', desc: 'जकड़न को कम करने में मदद करता है।' }, { icon: 'fas fa-person-walking', title: 'गतिशीलता में सुधार करता है', desc: 'लचीलेपन का समर्थन करता है।' }, { icon: 'fas fa-bone', title: 'हड्डियों और जोड़ों को मजबूत बनाता है', desc: 'हड्डियों को पोषण देता है।' }, { icon: 'fas fa-leaf', title: '100% आयुर्वेदिक और प्राकृतिक', desc: 'शुद्ध हर्बल फॉर्मूला।' }], ingLabel: 'आयुर्वेद की शक्ति', ingTitle: 'हमारी सामग्री', ingDesc: 'पाँच शक्तिशाली जड़ी-बूटियाँ।', ingredients: [{ name: 'शल्लाकी', sub: 'Boswellia', desc: 'सूजन और दर्द को कम करता है।', emoji: '🪵' }, { name: 'गुग्गुल', sub: 'Guggul', desc: 'दर्द से राहत में सहायक।', emoji: '🌰' }, { name: 'सोंठ', sub: 'Dry Ginger', desc: 'सूजन कम करता है।', emoji: '🫚' }, { name: 'हड़जोड़', sub: 'Had Jod', desc: 'हड्डियों को मजबूत बनाता है।', emoji: '🌿' }, { name: 'अश्वगंधा', sub: 'Ashwagandha', desc: 'शक्ति बढ़ाता है।', emoji: '🌱' }], howLabel: 'सरल और प्रभावी', howTitle: 'उपयोग कैसे करें', howDesc: 'अपनी दिनचर्या में शामिल करें।', steps: [{ num: '1', title: 'सुबह और शाम', desc: '1 चम्मच पाउडर लें।' }, { num: '2', title: 'गर्म पानी के साथ', desc: 'गर्म पानी या दूध के साथ लें।' }, { num: '3', title: 'भोजन के बाद', desc: 'भोजन के बाद लें।' }, { num: '4', title: 'नियमित रहें', desc: 'कम से कम 1 महीने तक उपयोग करें।' }], resultBig: '100%', resultLabel: 'आयुर्वेदिक और प्राकृतिक फॉर्मूला', resultDesc: 'मजबूत जोड़ों और बेहतर गति का एक प्राकृतिक तरीका।', resultBadges: ['कोई संरक्षक नहीं', 'रसायन मुक्त', 'सुरक्षित और प्रभावी', 'कोई साइड इफेक्ट नहीं'], ctaTitle: 'आज ही जोड़ों के दर्द को अलविदा कहें', ctaDesc: 'प्राकृतिक राहत का अनुभव करें।' },
+        gu: { name: 'સાંધાનો દુખાવો', type: 'પાઉડર', fullName: 'ગ્રીનહાઉસ જોઈન્ટ પેન પાઉડર', tagline: 'આયુર્વેદિક સાંધા સપોર્ટ ફોર્મ્યુલા', price: 499, description: 'સાંધાના દુખાવામાં રાહત આપવા માટે બનાવવામાં આવેલ છે.', herbsCount: 5, herbsLabel: 'શક્તિશાળી જડીબુટ્ટીઓ', benefitsLabel: 'કુદરતી ઘટકોની શક્તિ', benefitsTitle: 'દરેક ચમચીમાં શક્તિ', benefitsDesc: 'સાંધાના દુખાવા માટે 5 શક્તિશાળી જડીબુટ્ટીઓ સાથે તૈયાર કરવામાં આવ્યું છે.', benefits: [{ icon: 'fas fa-hand-holding-medical', title: 'સાંધાના દુખાવામાં રાહત આપે', desc: 'દુખાવામાં રાહત આપે.' }, { icon: 'fas fa-wind', title: 'જડતા અને સોજામાં ઘટાડો કરે', desc: 'સોજો ઘટાડવામાં મદદ કરે.' }, { icon: 'fas fa-person-walking', title: 'લવચીકતા વધારવામાં મદદરૂપ', desc: 'લવચીકતા વધારે.' }, { icon: 'fas fa-bone', title: 'હાડકા અને સાંધાને મજબૂત બનાવે', desc: 'હાડકાને પોષણ આપે.' }, { icon: 'fas fa-leaf', title: '100% આયુર્વેદિક અને કુદરતી', desc: 'શુદ્ધ હર્બલ ફોર્મ્યુલા.' }], ingLabel: 'આયુર્વેદની શક્તિ', ingTitle: 'અમારા ઘટકો', ingDesc: 'પાંચ શક્તિશાળી જડીબુટ્ટીઓ.', ingredients: [{ name: 'શલ્લાકી', sub: 'Boswellia', desc: 'બળતરા ઓછી કરવામાં મદદરૂપ.', emoji: '🪵' }, { name: 'ગુગગુલ', sub: 'Guggul', desc: 'દુખાવામાં રાહત આપવા સહાયક.', emoji: '🌰' }, { name: 'સૂંઠ', sub: 'Dry Ginger', desc: 'સોજો ઓછી કરે.', emoji: '🫚' }, { name: 'હરડે', sub: 'Had Jod', desc: 'સાંધાને મજબૂત બનાવે.', emoji: '🌿' }, { name: 'અશ્વગંધા', sub: 'Ashwagandha', desc: 'શક્તિ વધારે છે.', emoji: '🌱' }], howLabel: 'સરળ અને અસરકારક', howTitle: 'ઉપયોગ કેવી રીતે કરવો', howDesc: 'તમારી દિનચર્યામાં સામેલ કરો.', steps: [{ num: '1', title: 'સવારે અને સાંજે', desc: '1 ચમચી પાઉડર લો.' }, { num: '2', title: 'ગરમ પાણી સાથે', desc: 'ગરમ પાણી અથવા દૂધ સાથે લો.' }, { num: '3', title: 'ભોજન પછી', desc: 'ભોજન પછી લો.' }, { num: '4', title: 'સુસંગત રહો', desc: 'ઓછામાં ઓછા 1 મહિના સુધી ઉપયોગ કરો.' }], resultBig: '100%', resultLabel: 'આયુર્વેદિક અને કુદરતી ફોર્મ્યુલા', resultDesc: 'મજબૂત સાંધા માટે કુદરતી રીત.', resultBadges: ['કોઈ પ્રિઝર્વેટિવ્સ નહીં', 'રસાયણ મુક્ત', 'સુરક્ષિત અને અસરકારક', 'કોઈ આડઅસર નહીં'], ctaTitle: 'આજે જ સાંધાના દુખાવાને અલવિદા કહો', ctaDesc: 'કુદરતી રાહતનો અનુભવ કરો.' }
+      },
+      hairOil: {
+        en: { name: 'Growth Hair Oil', type: 'Hair Oil', fullName: 'Greenhouse Growth Hair Oil', tagline: 'Ayurvedic Hair Growth & Strength Formula', price: 300, description: 'A powerful blend of 14 Ayurvedic herbs that promotes healthy hair growth, reduces hair fall, fights dandruff, and nourishes the scalp deeply.', herbsCount: 14, herbsLabel: 'Ayurvedic Herbs', benefitsLabel: 'Power of Natural Ingredients', benefitsTitle: 'Nourish Your Roots', benefitsDesc: 'Formulated with 14 potent herbs for complete scalp and hair health.', benefits: [{ icon: 'fas fa-leaf', title: 'Reduces Hair Fall', desc: 'Helps strengthen hair roots to reduce hair fall.' }, { icon: 'fas fa-seedling', title: 'Promotes Healthy Hair Growth', desc: 'Stimulates the scalp for healthy hair growth.' }, { icon: 'fas fa-shield-alt', title: 'Fights Dandruff', desc: 'Helps clear dandruff and soothes the scalp.' }, { icon: 'fas fa-spa', title: 'Nourishes the Scalp', desc: 'Deeply conditions and nourishes the scalp.' }, { icon: 'fas fa-star', title: 'Improves Hair Texture', desc: 'Makes hair soft, shiny, and manageable.' }], ingLabel: 'Power of Ayurveda', ingTitle: 'Key Ingredients', ingDesc: '14 potent herbs carefully blended for maximum hair nourishment.', ingredients: [{ name: 'Bhringraj', sub: 'King of Herbs', desc: 'Promotes hair growth and reduces graying.', emoji: '🌿' }, { name: 'Manjistha', sub: 'Rubia Cordifolia', desc: 'Purifies blood and improves scalp health.', emoji: '🪵' }, { name: 'Lodhra', sub: 'Symplocos', desc: 'Helps reduce inflammation and nourishes hair.', emoji: '🌱' }, { name: 'Lal Chandan', sub: 'Red Sandalwood', desc: 'Cools the scalp and improves complexion.', emoji: '🪵' }, { name: 'Haldi', sub: 'Turmeric', desc: 'Anti-bacterial properties keep scalp clean.', emoji: '🟡' }, { name: 'Mulethi', sub: 'Licorice', desc: 'Prevents hair fall and strengthens roots.', emoji: '🌿' }], howLabel: 'Simple & Effective', howTitle: 'How to Use', howDesc: 'Incorporate Greenhouse Growth Hair Oil into your routine.', steps: [{ num: '1', title: 'Take a Few Drops', desc: 'Pour a small amount of oil into your palm.' }, { num: '2', title: 'Massage Gently', desc: 'Massage into the scalp and hair roots in circular motions.' }, { num: '3', title: 'Leave It On', desc: 'Leave overnight or for at least 1 hour.' }, { num: '4', title: 'Wash Off', desc: 'Wash off with a mild herbal shampoo.' }], resultBig: '100%', resultLabel: 'Ayurvedic & Natural Formula', resultDesc: 'A natural way to stronger roots and healthier hair. Safe, effective and free from harmful chemicals.', resultBadges: ['Reduces Hair Fall', 'Fights Dandruff', 'Nourishes Scalp', 'Promotes Growth'], ctaTitle: 'Get Stronger, Healthier Hair Today', ctaDesc: 'Experience the natural goodness of Ayurveda with Greenhouse Growth Hair Oil.' },
+        hi: { name: 'ग्रोथ हेयर ऑयल', type: 'हेयर ऑयल', fullName: 'ग्रीनहाउस ग्रोथ हेयर ऑयल', tagline: 'आयुर्वेदिक बाल विकास और मजबूती फॉर्मूला', price: 300, description: '14 आयुर्वेदिक जड़ी-बूटियों का एक शक्तिशाली मिश्रण जो बालों के विकास को बढ़ावा देता है।', herbsCount: 14, herbsLabel: 'आयुर्वेदिक जड़ी-बूटियाँ', benefitsLabel: 'प्राकृतिक सामग्री की शक्ति', benefitsTitle: 'अपनी जड़ों को पोषण दें', benefitsDesc: 'बालों के पूर्ण स्वास्थ्य के लिए 14 शक्तिशाली जड़ी-बूटियों के साथ तैयार किया गया।', benefits: [{ icon: 'fas fa-leaf', title: 'बालों का झड़ना कम करता है', desc: 'बालों की जड़ों को मजबूत बनाता है।' }, { icon: 'fas fa-seedling', title: 'बालों का विकास बढ़ाता है', desc: 'स्वस्थ बालों के विकास को बढ़ावा देता है।' }, { icon: 'fas fa-shield-alt', title: 'डैंड्रफ से लड़ता है', desc: 'रूसी को साफ करता है।' }, { icon: 'fas fa-spa', title: 'खोपड़ी को पोषण देता है', desc: 'खोपड़ी को गहराई से पोषण देता है।' }, { icon: 'fas fa-star', title: 'बालों की बनावट में सुधार करता है', desc: 'बालों को मुलायम और चमकदार बनाता है।' }], ingLabel: 'आयुर्वेद की शक्ति', ingTitle: 'प्रमुख सामग्री', ingDesc: 'अधिकतम पोषण के लिए 14 शक्तिशाली जड़ी-बूटियाँ।', ingredients: [{ name: 'भृंगराज', sub: 'Bhringraj', desc: 'बालों का विकास बढ़ाता है।', emoji: '🌿' }, { name: 'मंजिष्ठा', sub: 'Manjistha', desc: 'खोपड़ी के स्वास्थ्य में सुधार करता है।', emoji: '🪵' }, { name: 'लोध्र', sub: 'Lodhra', desc: 'बालों को पोषण देता है।', emoji: '🌱' }, { name: 'लाल चंदन', sub: 'Red Sandalwood', desc: 'खोपड़ी को ठंडक देता है।', emoji: '🪵' }, { name: 'हल्दी', sub: 'Turmeric', desc: 'खोपड़ी को साफ रखता है।', emoji: '🟡' }, { name: 'मुलेठी', sub: 'Licorice', desc: 'बालों को मजबूत बनाता है।', emoji: '🌿' }], howLabel: 'सरल और प्रभावी', howTitle: 'उपयोग कैसे करें', howDesc: 'अपनी दिनचर्या में शामिल करें।', steps: [{ num: '1', title: 'कुछ बूंदें लें', desc: 'हथेली में थोड़ा तेल लें।' }, { num: '2', title: 'धीरे से मालिश करें', desc: 'सिर की त्वचा पर मालिश करें।' }, { num: '3', title: 'लगा रहने दें', desc: 'रात भर या 1 घंटे के लिए छोड़ दें।' }, { num: '4', title: 'धो लें', desc: 'माइल्ड शैम्पू से धो लें।' }], resultBig: '100%', resultLabel: 'आयुर्वेदिक और प्राकृतिक फॉर्मूला', resultDesc: 'मजबूत जड़ों और स्वस्थ बालों का एक प्राकृतिक तरीका।', resultBadges: ['बालों का झड़ना कम', 'डैंड्रफ से लड़ता है', 'खोपड़ी को पोषण', 'विकास को बढ़ावा'], ctaTitle: 'आज ही मजबूत, स्वस्थ बाल पाएं', ctaDesc: 'प्राकृतिक अच्छाई का अनुभव करें।' },
+        gu: { name: 'ગ્રોથ હેર ઓઇલ', type: 'હેર ઓઇલ', fullName: 'ગ્રીનહાઉસ ગ્રોથ હેર ઓઇલ', tagline: 'આયુર્વેદિક વાળ વૃદ્ધિ અને મજબૂતી ફોર્મ્યુલા', price: 300, description: '14 આયુર્વેદિક જડીબુટ્ટીઓનું શક્તિશાળી મિશ્રણ જે વાળની વૃદ્ધિને પ્રોત્સાહન આપે છે.', herbsCount: 14, herbsLabel: 'આયુર્વેદિક જડીબુટ્ટીઓ', benefitsLabel: 'કુદરતી ઘટકોની શક્તિ', benefitsTitle: 'તમારા મૂળને પોષણ આપો', benefitsDesc: 'વાળના સંપૂર્ણ સ્વાસ્થ્ય માટે 14 શક્તિશાળી જડીબુટ્ટીઓ સાથે તૈયાર કરવામાં આવ્યું છે.', benefits: [{ icon: 'fas fa-leaf', title: 'વાળ ખરતા અટકાવે', desc: 'વાળના મૂળને મજબૂત બનાવે છે.' }, { icon: 'fas fa-seedling', title: 'વાળની વૃદ્ધિ વધારે', desc: 'સ્વસ્થ વાળની વૃદ્ધિને પ્રોત્સાહન આપે છે.' }, { icon: 'fas fa-shield-alt', title: 'ડેન્ડ્રફ સામે લડે', desc: 'ડેન્ડ્રફ સાફ કરે છે.' }, { icon: 'fas fa-spa', title: 'સ્કાલ્પને પોષણ આપે', desc: 'સ્કાલ્પને ઊંડાણપૂર્વક પોષણ આપે છે.' }, { icon: 'fas fa-star', title: 'વાળની ટેક્સચર સુધારે', desc: 'વાળને નરમ અને ચમકદાર બનાવે છે.' }], ingLabel: 'આયુર્વેદની શક્તિ', ingTitle: 'મુખ્ય ઘટકો', ingDesc: 'મહત્તમ પોષણ માટે 14 શક્તિશાળી જડીબુટ્ટીઓ.', ingredients: [{ name: 'ભૃંગરાજ', sub: 'Bhringraj', desc: 'વાળની વૃદ્ધિ વધારે છે.', emoji: '🌿' }, { name: 'મંજિષ્ઠા', sub: 'Manjistha', desc: 'સ્કાલ્પના સ્વાસ્થ્યમાં સુધારો કરે છે.', emoji: '🪵' }, { name: 'લોધ્ર', sub: 'Lodhra', desc: 'વાળને પોષણ આપે છે.', emoji: '🌱' }, { name: 'લાલ ચંદન', sub: 'Red Sandalwood', desc: 'સ્કાલ્પને ઠંડક આપે છે.', emoji: '🪵' }, { name: 'હળદર', sub: 'Turmeric', desc: 'સ્કાલ્પને સ્વચ્છ રાખે છે.', emoji: '🟡' }, { name: 'મુલેઠી', sub: 'Licorice', desc: 'વાળને મજબૂત બનાવે છે.', emoji: '🌿' }], howLabel: 'સરળ અને અસરકારક', howTitle: 'ઉપયોગ કેવી રીતે કરવો', howDesc: 'તમારી દિનચર્યામાં સામેલ કરો.', steps: [{ num: '1', title: 'થોડા ટીપાં લો', desc: 'હથેળીમાં થોડું તેલ લો.' }, { num: '2', title: 'હળવી માલિશ કરો', desc: 'માથાની ચામડી પર માલિશ કરો.' }, { num: '3', title: 'રહેવા દો', desc: 'રાતભર અથવા 1 કલાક માટે છોડી દો.' }, { num: '4', title: 'ધોઈ લો', desc: 'માઇલ્ડ શેમ્પૂથી ધોઈ લો.' }], resultBig: '100%', resultLabel: 'આયુર્વેદિક અને કુદરતી ફોર્મ્યુલા', resultDesc: 'મજબૂત મૂળ અને સ્વસ્થ વાળ માટે કુદરતી રીત.', resultBadges: ['વાળ ખરતા અટકાવે', 'ડેન્ડ્રફ સામે લડે', 'સ્કાલ્પને પોષણ', 'વૃદ્ધિને પ્રોત્સાહન'], ctaTitle: 'આજે જ મજબૂત, સ્વસ્થ વાળ મેળવો', ctaDesc: 'કુદરતી સારનો અનુભવ કરો.' }
+      },
+      amlaSoap: {
+        en: { name: 'Amla Soap', type: 'Soap', fullName: 'Greenhouse Amla Soap', tagline: 'Natural Hairwash Soap for Strong & Shiny Hair', price: 100, description: 'A handmade herbal soap enriched with the goodness of Amla, Reetha, and Shikakai. It gently cleanses the hair, removes dirt, and keeps the scalp fresh and healthy.', herbsCount: 10, herbsLabel: 'Natural Ingredients', benefitsLabel: 'Power of Natural Ingredients', benefitsTitle: 'Gentle Care for Your Hair', benefitsDesc: 'Handmade with natural ingredients for strong, shiny, and healthy hair.', benefits: [{ icon: 'fas fa-leaf', title: 'Gently Cleanses', desc: 'Cleanses hair naturally without stripping moisture.' }, { icon: 'fas fa-tint', title: 'Removes Dirt & Oil', desc: 'Helps remove dirt and excess oil from the scalp.' }, { icon: 'fas fa-spa', title: 'Keeps Hair Fresh', desc: 'Keeps hair fresh, clean, and revitalized.' }, { icon: 'fas fa-feather', title: 'Soft & Smooth', desc: 'Helps maintain soft and smooth hair texture.' }, { icon: 'fas fa-seedling', title: 'Amla Goodness', desc: 'Enriched with the natural goodness of Amla.' }], ingLabel: 'Power of Ayurveda', ingTitle: 'Key Ingredients', ingDesc: '10 natural ingredients blended for optimal hair care.', ingredients: [{ name: 'Amla Extract', sub: 'Indian Gooseberry', desc: 'Rich in Vitamin C for hair health.', emoji: '🟢' }, { name: 'Reetha Extract', sub: 'Soapnut', desc: 'Natural cleanser for hair.', emoji: '🌰' }, { name: 'Shikakai Extract', sub: 'Acacia Concinna', desc: 'Gentle hair conditioner.', emoji: '🌿' }, { name: 'Coconut Oil', sub: 'Cocos Nucifera', desc: 'Deeply moisturizes and nourishes.', emoji: '🥥' }, { name: 'Aloe Vera Gel', sub: 'Aloe Barbadensis', desc: 'Soothes the scalp and conditions hair.', emoji: '🌵' }], howLabel: 'Simple & Effective', howTitle: 'How to Use', howDesc: 'Use Greenhouse Amla Soap for a natural hair wash.', steps: [{ num: '1', title: 'Wet Your Hair', desc: 'Wet your hair thoroughly with water.' }, { num: '2', title: 'Rub the Soap', desc: 'Rub the soap directly on your hair or in your hands to create lather.' }, { num: '3', title: 'Massage', desc: 'Gently massage the lather into your scalp and hair.' }, { num: '4', title: 'Rinse', desc: 'Rinse thoroughly with water.' }], resultBig: '100%', resultLabel: 'Handmade Herbal Soap', resultDesc: 'A natural way to strong and shiny hair. Safe, effective, and free from harsh chemicals.', resultBadges: ['Handmade', 'Paraben & SLS Free', 'Toxin Free', 'Natural Ingredients'], ctaTitle: 'Upgrade Your Hairwash Routine Today', ctaDesc: 'Experience the natural goodness of Amla, Reetha, and Shikakai with Greenhouse Amla Soap.' },
+        hi: { name: 'आंवला साबुन', type: 'साबुन', fullName: 'ग्रीनहाउस आंवला साबुन', tagline: 'मजबूत और चमकदार बालों के लिए प्राकृतिक हेयरवॉश साबुन', price: 100, description: 'आंवला, रीठा और शिकाकाई से भरपूर एक हैंडमेड हर्बल साबुन।', herbsCount: 10, herbsLabel: 'प्राकृतिक सामग्री', benefitsLabel: 'प्राकृतिक सामग्री की शक्ति', benefitsTitle: 'आपके बालों के लिए कोमल देखभाल', benefitsDesc: 'मजबूत, चमकदार और स्वस्थ बालों के लिए प्राकृतिक सामग्री से बनाया गया।', benefits: [{ icon: 'fas fa-leaf', title: 'धीरे से साफ करता है', desc: 'बालों को प्राकृतिक रूप से साफ करता है।' }, { icon: 'fas fa-tint', title: 'गंदगी और तेल हटाता है', desc: 'अतिरिक्त तेल हटाने में मदद करता है।' }, { icon: 'fas fa-spa', title: 'बालों को ताजा रखता है', desc: 'बालों को ताजा और साफ रखता है।' }, { icon: 'fas fa-feather', title: 'मुलायम और चिकना', desc: 'मुलायम बालों को बनाए रखने में मदद करता है।' }, { icon: 'fas fa-seedling', title: 'आंवला की अच्छाई', desc: 'आंवला की प्राकृतिक अच्छाई से भरपूर।' }], ingLabel: 'आयुर्वेद की शक्ति', ingTitle: 'प्रमुख सामग्री', ingDesc: '10 प्राकृतिक सामग्री।', ingredients: [{ name: 'आंवला अर्क', sub: 'Amla', desc: 'बालों के लिए विटामिन सी।', emoji: '🟢' }, { name: 'रीठा अर्क', sub: 'Reetha', desc: 'प्राकृतिक क्लींजर।', emoji: '🌰' }, { name: 'शिकाकाई अर्क', sub: 'Shikakai', desc: 'कोमल कंडीशनर।', emoji: '🌿' }, { name: 'नारियल तेल', sub: 'Coconut Oil', desc: 'नमी और पोषण देता है।', emoji: '🥥' }, { name: 'एलोवेरा जेल', sub: 'Aloe Vera', desc: 'खोपड़ी को शांत करता है।', emoji: '🌵' }], howLabel: 'सरल और प्रभावी', howTitle: 'उपयोग कैसे करें', howDesc: 'प्राकृतिक हेयर वॉश के लिए उपयोग करें।', steps: [{ num: '1', title: 'बाल गीले करें', desc: 'बालों को अच्छी तरह गीला करें।' }, { num: '2', title: 'साबुन रगड़ें', desc: 'साबुन को सीधे बालों पर रगड़ें।' }, { num: '3', title: 'मालिश करें', desc: 'सिर की त्वचा पर मालिश करें।' }, { num: '4', title: 'धो लें', desc: 'पानी से अच्छी तरह धो लें।' }], resultBig: '100%', resultLabel: 'हैंडमेड हर्बल साबुन', resultDesc: 'मजबूत और चमकदार बालों का प्राकृतिक तरीका।', resultBadges: ['हैंडमेड', 'पैराबेन और SLS मुक्त', 'टॉक्सिन मुक्त', 'प्राकृतिक सामग्री'], ctaTitle: 'आज ही अपनी हेयरवॉश दिनचर्या बदलें', ctaDesc: 'प्राकृतिक अच्छाई का अनुभव करें।' },
+        gu: { name: 'આમળા સાબુ', type: 'સાબુ', fullName: 'ગ્રીનહાઉસ આમળા સાબુ', tagline: 'મજબૂત અને ચમકદાર વાળ માટે કુદરતી હેરવોશ સાબુ', price: 100, description: 'આમળા, રીઠા અને શિકાકાઈની સાર સાથેનો હેન્ડમેડ હર્બલ સાબુ.', herbsCount: 10, herbsLabel: 'કુદરતી ઘટકો', benefitsLabel: 'કુદરતી ઘટકોની શક્તિ', benefitsTitle: 'તમારા વાળ માટે કોમળ સંભાળ', benefitsDesc: 'મજબૂત, ચમકદાર અને સ્વસ્થ વાળ માટે કુદરતી ઘટકોથી બનાવવામાં આવ્યું છે.', benefits: [{ icon: 'fas fa-leaf', title: 'હળવાશથી સાફ કરે', desc: 'વાળને કુદરતી રીતે સાફ કરે છે.' }, { icon: 'fas fa-tint', title: 'ગંદકી અને તેલ દૂર કરે', desc: 'વધારાનું તેલ દૂર કરવામાં મદદ કરે છે.' }, { icon: 'fas fa-spa', title: 'વાળને તાજા રાખે', desc: 'વાળને તાજા અને સ્વચ્છ રાખે છે.' }, { icon: 'fas fa-feather', title: 'નરમ અને ચીકણું', desc: 'નરમ વાળ જાળવવામાં મદદ કરે છે.' }, { icon: 'fas fa-seedling', title: 'આમળાની સાર', desc: 'આમળાની કુદરતી સારથી ભરપૂર.' }], ingLabel: 'આયુર્વેદની શક્તિ', ingTitle: 'મુખ્ય ઘટકો', ingDesc: '10 કુદરતી ઘટકો.', ingredients: [{ name: 'આમળા સાર', sub: 'Amla', desc: 'વાળ માટે વિટામિન સી.', emoji: '🟢' }, { name: 'રીઠા સાર', sub: 'Reetha', desc: 'કુદરતી ક્લીનઝર.', emoji: '🌰' }, { name: 'શિકાકાઈ સાર', sub: 'Shikakai', desc: 'કોમળ કન્ડીશનર.', emoji: '🌿' }, { name: 'નાળિયેર તેલ', sub: 'Coconut Oil', desc: 'ભેજ અને પોષણ આપે છે.', emoji: '🥥' }, { name: 'એલોવેરા જેલ', sub: 'Aloe Vera', desc: 'સ્કાલ્પને શાંત કરે છે.', emoji: '🌵' }], howLabel: 'સરળ અને અસરકારક', howTitle: 'ઉપયોગ કેવી રીતે કરવો', howDesc: 'કુદરતી હેર વોશ માટે ઉપયોગ કરો.', steps: [{ num: '1', title: 'વાળ ભીના કરો', desc: 'વાળને સારી રીતે ભીના કરો.' }, { num: '2', title: 'સાબુ ઘસો', desc: 'સાબુને સીધો વાળ પર ઘસો.' }, { num: '3', title: 'માલિશ કરો', desc: 'માથાની ચામડી પર માલિશ કરો.' }, { num: '4', title: 'ધોઈ લો', desc: 'પાણીથી સારી રીતે ધોઈ લો.' }], resultBig: '100%', resultLabel: 'હેન્ડમેડ હર્બલ સાબુ', resultDesc: 'મજબૂત અને ચમકદાર વાળ માટે કુદરતી રીત.', resultBadges: ['હેન્ડમેડ', 'પેરાબેન અને SLS મુક્ત', 'ટોક્સિન મુક્ત', 'કુદરતી ઘટકો'], ctaTitle: 'આજે જ તમારી હેરવોશ દિનચર્યા બદલો', ctaDesc: 'કુદરતી સારનો અનુભવ કરો.' }
+      },
+      multaniSoap: {
+        en: { name: 'Multani Mitti Soap', type: 'Soap', fullName: 'Greenhouse Multani Mitti Soap', tagline: 'For Deep Cleanse & Natural Glow', price: 100, description: 'A handmade herbal soap crafted with Multani Mitti and Rose Powder to deeply cleanse the skin, remove excess oil, and leave a natural glow.', herbsCount: 7, herbsLabel: 'Natural Ingredients', benefitsLabel: 'Power of Natural Ingredients', benefitsTitle: 'Deep Cleanse, Natural Glow', benefitsDesc: 'Handmade with Multani Mitti and Rose for clear, glowing skin.', benefits: [{ icon: 'fas fa-spa', title: 'Deep Cleansing', desc: 'Cleanses pores deeply for clear skin.' }, { icon: 'fas fa-tint', title: 'Removes Excess Oil', desc: 'Helps control excess oil production.' }, { icon: 'fas fa-sun', title: 'Improves Brightness', desc: 'Leaves skin bright and radiant.' }, { icon: 'fas fa-leaf', title: 'Soothing & Calming', desc: 'Soothes irritated skin naturally.' }, { icon: 'fas fa-shield-alt', title: 'Reduces Acne', desc: 'Helps reduce the appearance of acne and blemishes.' }], ingLabel: 'Power of Ayurveda', ingTitle: 'Key Ingredients', ingDesc: '7 natural ingredients blended for optimal skin care.', ingredients: [{ name: 'Multani Mitti', sub: 'Fuller\'s Earth', desc: 'Deep cleanses and removes oil.', emoji: '🟤' }, { name: 'Rose Powder', sub: 'Rosa', desc: 'Soothes and tones the skin.', emoji: '🌹' }, { name: 'Grapeseed Oil', sub: 'Vitis Vinifera', desc: 'Lightweight moisturizer.', emoji: '🍇' }, { name: 'Almond Oil', sub: 'Prunus Dulcis', desc: 'Nourishes and softens skin.', emoji: '🌰' }, { name: 'Aloe Vera Gel', sub: 'Aloe Barbadensis', desc: 'Calms and hydrates the skin.', emoji: '🌵' }], howLabel: 'Simple & Effective', howTitle: 'How to Use', howDesc: 'Use Greenhouse Multani Mitti Soap for a deep cleanse.', steps: [{ num: '1', title: 'Wet Your Skin', desc: 'Wet your face or body with water.' }, { num: '2', title: 'Rub the Soap', desc: 'Rub the soap between your hands to create a rich lather.' }, { num: '3', title: 'Apply Gently', desc: 'Apply the lather to your skin and massage gently.' }, { num: '4', title: 'Rinse Well', desc: 'Rinse thoroughly with water and pat dry.' }], resultBig: '100%', resultLabel: 'Handmade Herbal Soap', resultDesc: 'A natural way to clear, glowing skin. Safe, effective, and free from harsh chemicals.', resultBadges: ['Handmade', 'Paraben & SLS Free', 'Toxin Free', 'Natural Ingredients'], ctaTitle: 'Get Clear, Glowing Skin Today', ctaDesc: 'Experience the deep cleansing power of Multani Mitti with Greenhouse Multani Mitti Soap.' },
+        hi: { name: 'मुल्तानी मिट्टी साबुन', type: 'साबुन', fullName: 'ग्रीनहाउस मुल्तानी मिट्टी साबुन', tagline: 'गहरी सफाई और प्राकृतिक चमक के लिए', price: 100, description: 'मुल्तानी मिट्टी और गुलाब पाउडर से बना एक हैंडमेड हर्बल साबुन।', herbsCount: 7, herbsLabel: 'प्राकृतिक सामग्री', benefitsLabel: 'प्राकृतिक सामग्री की शक्ति', benefitsTitle: 'गहरी सफाई, प्राकृतिक चमक', benefitsDesc: 'साफ, चमकती त्वचा के लिए मुल्तानी मिट्टी और गुलाब से बनाया गया।', benefits: [{ icon: 'fas fa-spa', title: 'गहरी सफाई', desc: 'त्वचा को गहराई से साफ करता है।' }, { icon: 'fas fa-tint', title: 'अतिरिक्त तेल हटाता है', desc: 'तेल उत्पादन को नियंत्रित करने में मदद करता है।' }, { icon: 'fas fa-sun', title: 'चमक में सुधार', desc: 'त्वचा को चमकदार बनाता है।' }, { icon: 'fas fa-leaf', title: 'सुखदायक और शांत', desc: 'त्वचा को शांत करता है।' }, { icon: 'fas fa-shield-alt', title: 'मुंहासे कम करता है', desc: 'मुंहासों को कम करने में मदद करता है।' }], ingLabel: 'आयुर्वेद की शक्ति', ingTitle: 'प्रमुख सामग्री', ingDesc: '7 प्राकृतिक सामग्री।', ingredients: [{ name: 'मुल्तानी मिट्टी', sub: 'Fuller\'s Earth', desc: 'गहराई से साफ करती है।', emoji: '🟤' }, { name: 'गुलाब पाउडर', sub: 'Rose', desc: 'त्वचा को शांत करता है।', emoji: '🌹' }, { name: 'अंगूर के बीज का तेल', sub: 'Grapeseed Oil', desc: 'हल्का मॉइस्चराइज़र।', emoji: '🍇' }, { name: 'बादाम का तेल', sub: 'Almond Oil', desc: 'त्वचा को नरम करता है।', emoji: '🌰' }, { name: 'एलोवेरा जेल', sub: 'Aloe Vera', desc: 'त्वचा को हाइड्रेट करता है।', emoji: '🌵' }], howLabel: 'सरल और प्रभावी', howTitle: 'उपयोग कैसे करें', howDesc: 'गहरी सफाई के लिए उपयोग करें।', steps: [{ num: '1', title: 'त्वचा गीली करें', desc: 'चेहरे या शरीर को गीला करें।' }, { num: '2', title: 'साबुन रगड़ें', desc: 'झाग बनाने के लिए साबुन रगड़ें।' }, { num: '3', title: 'धीरे से लगाएं', desc: 'त्वचा पर लगाएं और मालिश करें।' }, { num: '4', title: 'धो लें', desc: 'पानी से अच्छी तरह धो लें।' }], resultBig: '100%', resultLabel: 'हैंडमेड हर्बल साबुन', resultDesc: 'साफ, चमकती त्वचा का प्राकृतिक तरीका।', resultBadges: ['हैंडमेड', 'पैराबेन और SLS मुक्त', 'टॉक्सिन मुक्त', 'प्राकृतिक सामग्री'], ctaTitle: 'आज ही साफ, चमकती त्वचा पाएं', ctaDesc: 'गहरी सफाई की शक्ति का अनुभव करें।' },
+        gu: { name: 'મુલતાની માટી સાબુ', type: 'સાબુ', fullName: 'ગ્રીનહાઉસ મુલતાની માટી સાબુ', tagline: 'ઊંડી સફાઈ અને કુદરતી ચમક માટે', price: 100, description: 'મુલતાની માટી અને ગુલાબ પાવડર સાથે બનાવેલો હેન્ડમેડ હર્બલ સાબુ.', herbsCount: 7, herbsLabel: 'કુદરતી ઘટકો', benefitsLabel: 'કુદરતી ઘટકોની શક્તિ', benefitsTitle: 'ઊંડી સફાઈ, કુદરતી ચમક', benefitsDesc: 'સ્વચ્છ, ચમકતી ત્વચા માટે મુલતાની માટી અને ગુલાબ સાથે બનાવવામાં આવ્યું છે.', benefits: [{ icon: 'fas fa-spa', title: 'ઊંડી સફાઈ', desc: 'ત્વચાને ઊંડાણપૂર્વક સાફ કરે છે.' }, { icon: 'fas fa-tint', title: 'વધારાનું તેલ દૂર કરે', desc: 'તેલ ઉત્પાદન નિયંત્રિત કરવામાં મદદ કરે છે.' }, { icon: 'fas fa-sun', title: 'ચમક સુધારે', desc: 'ત્વચાને ચમકદાર બનાવે છે.' }, { icon: 'fas fa-leaf', title: 'શાંત અને આરામદાયક', desc: 'ત્વચાને શાંત કરે છે.' }, { icon: 'fas fa-shield-alt', title: 'ખીલ ઘટાડે', desc: 'ખીલ ઘટાડવામાં મદદ કરે છે.' }], ingLabel: 'આયુર્વેદની શક્તિ', ingTitle: 'મુખ્ય ઘટકો', ingDesc: '7 કુદરતી ઘટકો.', ingredients: [{ name: 'મુલતાની માટી', sub: 'Fuller\'s Earth', desc: 'ઊંડાણપૂર્વક સાફ કરે છે.', emoji: '🟤' }, { name: 'ગુલાબ પાવડર', sub: 'Rose', desc: 'ત્વચાને શાંત કરે છે.', emoji: '🌹' }, { name: 'દ્રાક્ષ બીજ તેલ', sub: 'Grapeseed Oil', desc: 'હલકો મોઇશ્ચરાઇઝર.', emoji: '🍇' }, { name: 'બદામ તેલ', sub: 'Almond Oil', desc: 'ત્વચાને નરમ કરે છે.', emoji: '🌰' }, { name: 'એલોવેરા જેલ', sub: 'Aloe Vera', desc: 'ત્વચાને હાઇડ્રેટ કરે છે.', emoji: '🌵' }], howLabel: 'સરળ અને અસરકારક', howTitle: 'ઉપયોગ કેવી રીતે કરવો', howDesc: 'ઊંડી સફાઈ માટે ઉપયોગ કરો.', steps: [{ num: '1', title: 'ત્વચા ભીની કરો', desc: 'ચહેરો અથવા શરીર ભીનું કરો.' }, { num: '2', title: 'સાબુ ઘસો', desc: 'ફીણ બનાવવા માટે સાબુ ઘસો.' }, { num: '3', title: 'હળવાશથી લગાવો', desc: 'ત્વચા પર લગાવો અને માલિશ કરો.' }, { num: '4', title: 'ધોઈ લો', desc: 'પાણીથી સારી રીતે ધોઈ લો.' }], resultBig: '100%', resultLabel: 'હેન્ડમેડ હર્બલ સાબુ', resultDesc: 'સ્વચ્છ, ચમકતી ત્વચા માટે કુદરતી રીત.', resultBadges: ['હેન્ડમેડ', 'પેરાબેન અને SLS મુક્ત', 'ટોક્સિન મુક્ત', 'કુદરતી ઘટકો'], ctaTitle: 'આજે જ સ્વચ્છ, ચમકતી ત્વચા મેળવો', ctaDesc: 'ઊંડી સફાઈની શક્તિનો અનુભવ કરો.' }
+      },
+      neemSoap: {
+        en: { name: 'Neem Soap', type: 'Soap', fullName: 'Greenhouse Neem Soap', tagline: 'Anti Bacterial and Anti Fungal', price: 100, description: 'A handmade herbal soap enriched with Neem, Tulsi, and Tea Tree Oil to fight acne, keep skin clear, and soothe irritation naturally.', herbsCount: 7, herbsLabel: 'Natural Ingredients', benefitsLabel: 'Power of Natural Ingredients', benefitsTitle: 'Clear, Healthy Skin', benefitsDesc: 'Handmade with Neem and Tulsi for naturally clear and fresh skin.', benefits: [{ icon: 'fas fa-shield-alt', title: 'Fights Acne & Pimples', desc: 'Helps clear acne and pimples naturally.' }, { icon: 'fas fa-tint', title: 'Keeps Skin Clear', desc: 'Removes dirt and keeps skin clean.' }, { icon: 'fas fa-leaf', title: 'Soothes Irritation', desc: 'Calms skin irritation and redness.' }, { icon: 'fas fa-spa', title: 'Fresh & Smooth', desc: 'Keeps skin fresh, smooth, and healthy.' }, { icon: 'fas fa-seedling', title: 'Neem Goodness', desc: 'Enriched with the natural goodness of Neem.' }], ingLabel: 'Power of Ayurveda', ingTitle: 'Key Ingredients', ingDesc: '7 natural ingredients blended for optimal skin care.', ingredients: [{ name: 'Neem Powder', sub: 'Azadirachta Indica', desc: 'Anti-bacterial and anti-fungal.', emoji: '🌿' }, { name: 'Neem Extract', sub: 'Neem', desc: 'Purifies and cleanses the skin.', emoji: '🍃' }, { name: 'Tulsi Powder', sub: 'Holy Basil', desc: 'Fights bacteria and soothes skin.', emoji: '🌱' }, { name: 'Neem Oil', sub: 'Neem', desc: 'Moisturizes and protects skin.', emoji: '💧' }, { name: 'Tea Tree Oil', sub: 'Melaleuca', desc: 'Powerful acne-fighting ingredient.', emoji: '🌿' }], howLabel: 'Simple & Effective', howTitle: 'How to Use', howDesc: 'Use Greenhouse Neem Soap for clean, clear skin.', steps: [{ num: '1', title: 'Wet Your Skin', desc: 'Wet your face or body with water.' }, { num: '2', title: 'Create Lather', desc: 'Rub the soap to create a good lather.' }, { num: '3', title: 'Apply Gently', desc: 'Massage the lather onto your skin gently.' }, { num: '4', title: 'Rinse Well', desc: 'Rinse thoroughly with water and pat dry.' }], resultBig: '100%', resultLabel: 'Handmade Herbal Soap', resultDesc: 'A natural way to clear, healthy skin. Safe, effective, and free from harsh chemicals.', resultBadges: ['Handmade', 'Paraben & SLS Free', 'Toxin Free', 'Natural Ingredients'], ctaTitle: 'Get Clear, Healthy Skin Today', ctaDesc: 'Experience the natural goodness of Neem and Tulsi with Greenhouse Neem Soap.' },
+        hi: { name: 'नीम साबुन', type: 'साबुन', fullName: 'ग्रीनहाउस नीम साबुन', tagline: 'जीवाणुरोधी और कवकनाशी', price: 100, description: 'नीम, तुलसी और टी ट्री ऑयल से भरपूर एक हैंडमेड हर्बल साबुन।', herbsCount: 7, herbsLabel: 'प्राकृतिक सामग्री', benefitsLabel: 'प्राकृतिक सामग्री की शक्ति', benefitsTitle: 'साफ, स्वस्थ त्वचा', benefitsDesc: 'प्राकृतिक रूप से साफ और ताजा त्वचा के लिए नीम और तुलसी से बनाया गया।', benefits: [{ icon: 'fas fa-shield-alt', title: 'मुंहासों से लड़ता है', desc: 'मुंहासों को साफ करने में मदद करता है।' }, { icon: 'fas fa-tint', title: 'त्वचा साफ रखता है', desc: 'गंदगी हटाता है।' }, { icon: 'fas fa-leaf', title: 'जलन को शांत करता है', desc: 'त्वचा की जलन को शांत करता है।' }, { icon: 'fas fa-spa', title: 'ताजा और चिकना', desc: 'त्वचा को ताजा और स्वस्थ रखता है।' }, { icon: 'fas fa-seedling', title: 'नीम की अच्छाई', desc: 'नीम की प्राकृतिक अच्छाई से भरपूर।' }], ingLabel: 'आयुर्वेद की शक्ति', ingTitle: 'प्रमुख सामग्री', ingDesc: '7 प्राकृतिक सामग्री।', ingredients: [{ name: 'नीम पाउडर', sub: 'Neem', desc: 'एंटी-बैक्टीरियल और एंटी-फंगल।', emoji: '🌿' }, { name: 'नीम अर्क', sub: 'Neem', desc: 'त्वचा को शुद्ध करता है।', emoji: '🍃' }, { name: 'तुलसी पाउडर', sub: 'Tulsi', desc: 'बैक्टीरिया से लड़ता है।', emoji: '🌱' }, { name: 'नीम का तेल', sub: 'Neem Oil', desc: 'त्वचा की रक्षा करता है।', emoji: '💧' }, { name: 'टी ट्री ऑयल', sub: 'Tea Tree', desc: 'मुंहासों से लड़ने वाली सामग्री।', emoji: '🌿' }], howLabel: 'सरल और प्रभावी', howTitle: 'उपयोग कैसे करें', howDesc: 'साफ त्वचा के लिए उपयोग करें।', steps: [{ num: '1', title: 'त्वचा गीली करें', desc: 'चेहरे या शरीर को गीला करें।' }, { num: '2', title: 'झाग बनाएं', desc: 'साबुन को रगड़कर झाग बनाएं।' }, { num: '3', title: 'धीरे से लगाएं', desc: 'त्वचा पर मालिश करें।' }, { num: '4', title: 'धो लें', desc: 'पानी से अच्छी तरह धो लें।' }], resultBig: '100%', resultLabel: 'हैंडमेड हर्बल साबुन', resultDesc: 'साफ, स्वस्थ त्वचा का प्राकृतिक तरीका।', resultBadges: ['हैंडमेड', 'पैराबेन और SLS मुक्त', 'टॉक्सिन मुक्त', 'प्राकृतिक सामग्री'], ctaTitle: 'आज ही साफ, स्वस्थ त्वचा पाएं', ctaDesc: 'नीम और तुलसी की प्राकृतिक अच्छाई का अनुभव करें।' },
+        gu: { name: 'લીમડો સાબુ', type: 'સાબુ', fullName: 'ગ્રીનહાઉસ લીમડો સાબુ', tagline: 'એન્ટી બેક્ટેરિયલ અને એન્ટી ફંગલ', price: 100, description: 'લીમડો, તુલસી અને ટી ટ્રી ઓઇલ સાથે બનાવેલો હેન્ડમેડ હર્બલ સાબુ.', herbsCount: 7, herbsLabel: 'કુદરતી ઘટકો', benefitsLabel: 'કુદરતી ઘટકોની શક્તિ', benefitsTitle: 'સ્વચ્છ, સ્વસ્થ ત્વચા', benefitsDesc: 'કુદરતી રીતે સ્વચ્છ અને તાજી ત્વચા માટે લીમડો અને તુલસી સાથે બનાવવામાં આવ્યું છે.', benefits: [{ icon: 'fas fa-shield-alt', title: 'ખીલ સામે લડે', desc: 'ખીલ સાફ કરવામાં મદદ કરે છે.' }, { icon: 'fas fa-tint', title: 'ત્વચા સ્વચ્છ રાખે', desc: 'ગંદકી દૂર કરે છે.' }, { icon: 'fas fa-leaf', title: 'બળતરા શાંત કરે', desc: 'ત્વચાની બળતરા શાંત કરે છે.' }, { icon: 'fas fa-spa', title: 'તાજી અને ચીકણી', desc: 'ત્વચાને તાજી અને સ્વસ્થ રાખે છે.' }, { icon: 'fas fa-seedling', title: 'લીમડાની સાર', desc: 'લીમડાની કુદરતી સારથી ભરપૂર.' }], ingLabel: 'આયુર્વેદની શક્તિ', ingTitle: 'મુખ્ય ઘટકો', ingDesc: '7 કુદરતી ઘટકો.', ingredients: [{ name: 'લીમડો પાવડર', sub: 'Neem', desc: 'એન્ટી-બેક્ટેરિયલ અને એન્ટી-ફંગલ.', emoji: '🌿' }, { name: 'લીમડો સાર', sub: 'Neem', desc: 'ત્વચાને શુદ્ધ કરે છે.', emoji: '🍃' }, { name: 'તુલસી પાવડર', sub: 'Tulsi', desc: 'બેક્ટેરિયા સામે લડે છે.', emoji: '🌱' }, { name: 'લીમડાનું તેલ', sub: 'Neem Oil', desc: 'ત્વચાનું રક્ષણ કરે છે.', emoji: '💧' }, { name: 'ટી ટ્રી ઓઇલ', sub: 'Tea Tree', desc: 'ખીલ સામે લડતું ઘટક.', emoji: '🌿' }], howLabel: 'સરળ અને અસરકારક', howTitle: 'ઉપયોગ કેવી રીતે કરવો', howDesc: 'સ્વચ્છ ત્વચા માટે ઉપયોગ કરો.', steps: [{ num: '1', title: 'ત્વચા ભીની કરો', desc: 'ચહેરો અથવા શરીર ભીનું કરો.' }, { num: '2', title: 'ફીણ બનાવો', desc: 'સાબુને ઘસીને ફીણ બનાવો.' }, { num: '3', title: 'હળવાશથી લગાવો', desc: 'ત્વચા પર માલિશ કરો.' }, { num: '4', title: 'ધોઈ લો', desc: 'પાણીથી સારી રીતે ધોઈ લો.' }], resultBig: '100%', resultLabel: 'હેન્ડમેડ હર્બલ સાબુ', resultDesc: 'સ્વચ્છ, સ્વસ્થ ત્વચા માટે કુદરતી રીત.', resultBadges: ['હેન્ડમેડ', 'પેરાબેન અને SLS મુક્ત', 'ટોક્સિન મુક્ત', 'કુદરતી ઘટકો'], ctaTitle: 'આજે જ સ્વચ્છ, સ્વસ્થ ત્વચા મેળવો', ctaDesc: 'લીમડા અને તુલસીની કુદરતી સારનો અનુભવ કરો.' }
       }
     };
 
-    /* ═══════════════════════════════════════════════════════════
-       STATE
-    ═══════════════════════════════════════════════════════════ */
+    // Product List Order
+    const slideProducts = ['pachanmitra', 'jointPain', 'hairOil', 'amlaSoap', 'multaniSoap', 'neemSoap'];
     let currentLang = 'en';
-    let currentProductKey = 'weightLoss';
+    let currentProductKey = 'pachanmitra';
     let currentSlideIndex = 0;
+    
+    // Cart State
+    let cart = [];
+    let orderMode = 'buyNow'; // 'buyNow' or 'cart'
 
-    /* ═══════════════════════════════════════════════════════════
-       HELPERS
-    ═══════════════════════════════════════════════════════════ */
+    // ★★★ UPDATED IMAGE PATHS ★★★
+    // Save your provided images into an 'images' folder with these exact names.
+    const productImages = {
+      pachanmitra: 'product1.jpeg',
+      jointPain: 'product2.jpeg',
+      hairOil: 'product3.jpeg',
+      amlaSoap: 'product4.jpeg',
+      multaniSoap: 'product5.jpeg',
+      neemSoap: 'product6.jpeg'
+    };
+    
+    // Fallback SVG icon for missing images
+    const fallbackSVG = (emoji, text) => `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f0ebe1'/%3E%3Ctext x='100' y='105' font-size='48' text-anchor='middle' font-family='Arial'%3E${emoji}%3C/text%3E%3Ctext x='100' y='140' font-size='14' text-anchor='middle' font-family='Arial' fill='%237a7a7a'%3E${text}%3C/text%3E%3C/svg%3E`;
+    const emojis = { pachanmitra: '🌿', jointPain: '🦴', hairOil: '🧴', amlaSoap: '🧼', multaniSoap: '🧼', neemSoap: '🧼' };
+
     function t(key) {
       return (uiTranslations[currentLang] && uiTranslations[currentLang][key] !== undefined)
         ? uiTranslations[currentLang][key]
@@ -1163,18 +939,78 @@
 
     function getProduct(key) {
       const p = productData[key];
-      if (!p) return productData.weightLoss.en;
+      if (!p) return productData.pachanmitra.en;
       return p[currentLang] || p.en;
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       RENDER PRODUCT SECTIONS
-    ═══════════════════════════════════════════════════════════ */
+    // ─── RENDER SLIDER ───
+    const sliderTrack = document.getElementById('sliderTrack');
+    const sliderDots = document.getElementById('sliderDots');
+
+    function renderSlider() {
+      sliderTrack.innerHTML = '';
+      sliderDots.innerHTML = '';
+      slideProducts.forEach((key, index) => {
+        const p = getProduct(key);
+        const imgSrc = productImages[key];
+        const fallback = fallbackSVG(emojis[key], p.name);
+        
+        // Card
+        const card = document.createElement('div');
+        card.className = 'slide-card';
+        card.dataset.product = key;
+        if(index % 2 !== 0) card.style.background = '#faf8f4';
+        else card.style.background = '#ffffff';
+
+        card.innerHTML = `
+          <div class="product-image">
+            <img src="${imgSrc}" alt="${p.fullName}" onerror="this.src='${fallback}'" />
+          </div>
+          <div class="product-title" id="cardTitle${index}">${t('cardTitle'+index)}</div>
+          <div class="product-sub" id="cardSub${index}">${t('cardSub'+index)}</div>
+          <div class="product-badge" id="cardBadge${index}">${t('cardBadge'+index)}</div>
+          <div class="price-tag">₹${p.price} <small data-i18n="perPack">${t('perPack')}</small></div>
+          
+          <div class="card-btn-group">
+            <button class="btn-secondary add-to-cart-btn" data-product="${key}">
+              <i class="fas fa-cart-plus"></i> ${t('addToCart')}
+            </button>
+            <button class="btn-primary buy-now-btn" data-product="${key}">
+              <i class="fas fa-bolt"></i> ${t('buyNow')}
+            </button>
+          </div>
+
+          <div class="card-footer">
+            <span><i class="fas fa-star"></i> 4.8 (${Math.floor(Math.random()*2)+1}.k)</span>
+            <span><i class="fas fa-shield-alt"></i> ${t('safeTag')}</span>
+          </div>
+        `;
+        sliderTrack.appendChild(card);
+
+        // Dot
+        const dot = document.createElement('button');
+        dot.className = `dot ${index === 0 ? 'active' : ''}`;
+        dot.dataset.index = index;
+        sliderDots.appendChild(dot);
+
+        // Bind Events
+        card.querySelector('.add-to-cart-btn').addEventListener('click', () => addToCart(key));
+        card.querySelector('.buy-now-btn').addEventListener('click', () => openOrderModal('buyNow', key));
+      });
+
+      // Re-bind dot events
+      document.querySelectorAll('.slider-dots .dot').forEach(dot => {
+        dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index)));
+      });
+
+      goToSlide(currentSlideIndex, false);
+    }
+
+    // ─── RENDER PRODUCT DETAILS ───
     function setProduct(key) {
       const p = getProduct(key);
       currentProductKey = key;
 
-      // Hero
       document.getElementById('heroProductName').textContent = p.name;
       document.getElementById('heroProductType').textContent = p.type;
       document.getElementById('heroTagline').textContent = p.tagline;
@@ -1182,7 +1018,6 @@
       document.getElementById('statHerbs').textContent = p.herbsCount;
       document.getElementById('statHerbsLabel').textContent = p.herbsLabel;
 
-      // Benefits
       document.getElementById('benefitsLabel').textContent = p.benefitsLabel;
       document.getElementById('benefitsTitle').textContent = p.benefitsTitle;
       document.getElementById('benefitsDesc').textContent = p.benefitsDesc;
@@ -1194,7 +1029,6 @@
         </div>
       `).join('');
 
-      // Ingredients
       document.getElementById('ingLabel').textContent = p.ingLabel;
       document.getElementById('ingTitle').textContent = p.ingTitle;
       document.getElementById('ingDesc').textContent = p.ingDesc;
@@ -1207,7 +1041,6 @@
         </div>
       `).join('');
 
-      // How to Use
       document.getElementById('howLabel').textContent = p.howLabel;
       document.getElementById('howTitle').textContent = p.howTitle;
       document.getElementById('howDesc').textContent = p.howDesc;
@@ -1219,7 +1052,6 @@
         </div>
       `).join('');
 
-      // Results
       document.getElementById('resultBig').textContent = p.resultBig;
       document.getElementById('resultLabel').textContent = p.resultLabel;
       document.getElementById('resultDesc').textContent = p.resultDesc;
@@ -1227,133 +1059,197 @@
         <span><i class="fas fa-check-circle"></i> ${b}</span>
       `).join('');
 
-      // CTA
       document.getElementById('ctaTitle').textContent = p.ctaTitle;
       document.getElementById('ctaDesc').textContent = p.ctaDesc;
-      document.getElementById('ctaBtnText').textContent = t('orderNow') + ' — ₹' + p.price;
+      document.getElementById('ctaBtnText').textContent = t('buyNow') + ' — ₹' + p.price;
 
-      // Modal subhead
-      document.getElementById('modalSub').textContent =
-        t('modalSubPrefix') + p.fullName + t('modalSubSuffix');
+      // Update Buttons in Hero
+      document.getElementById('heroAddToCartBtn').onclick = () => addToCart(key);
+      document.getElementById('heroBuyNowBtn').onclick = () => openOrderModal('buyNow', key);
+      document.getElementById('ctaOrderBtn').onclick = () => openOrderModal('buyNow', key);
 
-      // Card 1 & 2 (static HTML gets updated for language)
-      document.getElementById('cardTitle1').textContent = t('cardTitle1');
-      document.getElementById('cardSub1').textContent = t('cardSub1');
-      document.getElementById('cardBadge1').textContent = t('cardBadge1');
-      document.getElementById('cardTitle2').textContent = t('cardTitle2');
-      document.getElementById('cardSub2').textContent = t('cardSub2');
-      document.getElementById('cardBadge2').textContent = t('cardBadge2');
+      // Update Cards (language update)
+      slideProducts.forEach((k, i) => {
+        if(document.getElementById('cardTitle'+i)) {
+          document.getElementById('cardTitle'+i).textContent = t('cardTitle'+i);
+          document.getElementById('cardSub'+i).textContent = t('cardSub'+i);
+          document.getElementById('cardBadge'+i).textContent = t('cardBadge'+i);
+        }
+      });
 
       observeNewElements();
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       LANGUAGE SWITCHER
-    ═══════════════════════════════════════════════════════════ */
-    function setLanguage(lang) {
-      if (!uiTranslations[lang]) lang = 'en';
-      currentLang = lang;
-      localStorage.setItem('greenhouse-lang', lang);
-
-      // 1. Update all static UI text (data-i18n)
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        const val = t(key);
-        // Only update if it has no child elements (otherwise the span inside stays)
-        if (el.children.length === 0) {
-          el.textContent = val;
-        }
-      });
-
-      // 2. Update placeholders
-      const usernameInput = document.getElementById('username');
-      const mobileInput = document.getElementById('mobile');
-      const addressInput = document.getElementById('address');
-      const ageInput = document.getElementById('age');
-      const weightInput = document.getElementById('weight');
-      if (usernameInput) usernameInput.placeholder = t('placeholderName');
-      if (mobileInput) mobileInput.placeholder = t('placeholderMobile');
-      if (addressInput) addressInput.placeholder = t('placeholderAddress');
-      if (ageInput) ageInput.placeholder = t('placeholderAge');
-      if (weightInput) weightInput.placeholder = t('placeholderWeight');
-
-      // 3. Re-render product sections for the current product
-      setProduct(currentProductKey);
-
-      // 4. Update active state on language menu
-      langButtons.forEach(b => {
-        b.classList.toggle('active-lang', b.dataset.lang === lang);
-      });
-      currentLangLabel.textContent = lang.toUpperCase();
-    }
-
-    /* ═══════════════════════════════════════════════════════════
-       SLIDER
-    ═══════════════════════════════════════════════════════════ */
-    const track = document.getElementById('sliderTrack');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
+    // ─── SLIDER NAVIGATION ───
     function goToSlide(index, updateDetails = true) {
       if (index < 0) index = 0;
-      if (index >= dots.length) index = dots.length - 1;
+      if (index >= slideProducts.length) index = slideProducts.length - 1;
       currentSlideIndex = index;
-      track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlideIndex));
+      sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+      document.querySelectorAll('.slider-dots .dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlideIndex);
+      });
       if (updateDetails) {
-        const key = index === 0 ? 'weightLoss' : 'jointPain';
-        setProduct(key);
+        setProduct(slideProducts[index]);
       }
     }
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => goToSlide(index));
-    });
+    document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlideIndex - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlideIndex + 1));
 
-    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlideIndex - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlideIndex + 1));
-
-    /* ═══════════════════════════════════════════════════════════
-       ORDER FORM MODAL
-    ═══════════════════════════════════════════════════════════ */
-    const modal = document.getElementById('orderModal');
-    const orderNowBtn = document.getElementById('orderNowBtn');
-    const ctaOrderBtn = document.getElementById('ctaOrderBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const orderForm = document.getElementById('orderForm');
-
-    function openModal() {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    // ─── CART LOGIC ───
+    function updateCartBadge() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartBadge').textContent = totalQty;
+      document.getElementById('cartBadge').style.display = totalQty > 0 ? 'flex' : 'none';
     }
 
-    function closeModal() {
-      modal.classList.remove('active');
+    function addToCart(key) {
+      const existing = cart.find(item => item.key === key);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        const p = getProduct(key);
+        cart.push({ key, qty: 1, price: p.price, name: p.fullName, img: productImages[key] });
+      }
+      updateCartBadge();
+      renderCartUI();
+      // Show quick feedback
+      openCartModal();
+    }
+
+    function removeFromCart(key) {
+      cart = cart.filter(item => item.key !== key);
+      updateCartBadge();
+      renderCartUI();
+    }
+
+    function updateQty(key, delta) {
+      const item = cart.find(i => i.key === key);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          removeFromCart(key);
+        } else {
+          updateCartBadge();
+          renderCartUI();
+        }
+      }
+    }
+
+    function renderCartUI() {
+      const container = document.getElementById('cartItemsContainer');
+      const totalEl = document.getElementById('cartTotalPrice');
+      
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-cart" style="font-size:2rem; margin-bottom:10px; opacity:0.5;"></i><br>Your cart is empty.</div>`;
+        totalEl.textContent = '₹0';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        const fallback = fallbackSVG(emojis[item.key], item.name);
+        return `
+          <div class="cart-item-row">
+            <img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}">
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <p>₹${item.price} / pack</p>
+            </div>
+            <div class="cart-item-controls">
+              <button class="qty-btn" onclick="updateQty('${item.key}', -1)">-</button>
+              <span class="cart-item-qty">${item.qty}</span>
+              <button class="qty-btn" onclick="updateQty('${item.key}', 1)">+</button>
+            </div>
+            <div class="cart-item-price">₹${subtotal}</div>
+            <button class="remove-item" onclick="removeFromCart('${item.key}')"><i class="fas fa-trash"></i></button>
+          </div>
+        `;
+      }).join('');
+
+      totalEl.textContent = '₹' + total;
+    }
+
+    // Cart Modal Controls
+    const cartModal = document.getElementById('cartModal');
+    document.getElementById('cartIconBtn').addEventListener('click', openCartModal);
+    document.getElementById('closeCartBtn').addEventListener('click', closeCartModal);
+    cartModal.addEventListener('click', (e) => { if (e.target === cartModal) closeCartModal(); });
+
+    function openCartModal() {
+      renderCartUI();
+      cartModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCartModal() {
+      cartModal.classList.remove('active');
       document.body.style.overflow = '';
     }
 
-    orderNowBtn.addEventListener('click', openModal);
-    ctaOrderBtn.addEventListener('click', openModal);
+    // ─── ORDER MODAL LOGIC ───
+    const orderModal = document.getElementById('orderModal');
+    const orderForm = document.getElementById('orderForm');
+    const orderSummaryBox = document.getElementById('orderSummaryBox');
+    const modalSub = document.getElementById('modalSub');
 
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const productKey = btn.dataset.product;
-        if (productKey && productKey !== currentProductKey) {
-          setProduct(productKey);
-          goToSlide(productKey === 'weightLoss' ? 0 : 1, false);
+    function openOrderModal(mode, productKey = null) {
+      orderMode = mode;
+      
+      if (mode === 'buyNow') {
+        const p = getProduct(productKey);
+        orderSummaryBox.innerHTML = `
+          <p><strong>Product:</strong> <span>${p.fullName}</span></p>
+          <p><strong>Price:</strong> <span>₹${p.price}</span></p>
+          <p><strong>Quantity:</strong> <span>1</span></p>
+          <div class="total-line"><span>Total:</span> <span>₹${p.price}</span></div>
+        `;
+        modalSub.textContent = `Fill in your details to buy ${p.fullName}. We'll confirm via WhatsApp.`;
+        orderModal.dataset.productKey = productKey; // Store for submit
+      } else if (mode === 'cart') {
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
         }
-        openModal();
-      });
+        let total = 0;
+        const itemsHtml = cart.map(item => {
+          const subtotal = item.price * item.qty;
+          total += subtotal;
+          return `<p><strong>${item.name}</strong> x${item.qty} <span>₹${subtotal}</span></p>`;
+        }).join('');
+        orderSummaryBox.innerHTML = `
+          ${itemsHtml}
+          <div class="total-line"><span>Total Amount:</span> <span>₹${total}</span></div>
+        `;
+        modalSub.textContent = `Review your order and fill in your details. We'll confirm via WhatsApp.`;
+      }
+
+      // Close cart modal if open
+      closeCartModal();
+      
+      orderModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      orderModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    orderModal.addEventListener('click', (e) => { 
+      if (e.target === orderModal) {
+        orderModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
     });
 
-    closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    // Checkout from Cart
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+      openOrderModal('cart');
+    });
 
-    /* ═══════════════════════════════════════════════════════════
-       WHATSAPP SUBMIT
-    ═══════════════════════════════════════════════════════════ */
+    // ─── WHATSAPP FORM SUBMIT ───
     const WHATSAPP_NUMBER = '919327573959';
 
     orderForm.addEventListener('submit', function(e) {
@@ -1363,10 +1259,8 @@
       const mobile = document.getElementById('mobile').value.trim();
       const address = document.getElementById('address').value.trim();
       const age = document.getElementById('age').value.trim();
-      const weight = document.getElementById('weight').value.trim();
-      const quantity = document.getElementById('quantity').value.trim() || '1';
 
-      if (!name || !mobile || !address || !age || !weight) {
+      if (!name || !mobile || !address || !age) {
         alert('Please fill in all required fields.');
         return;
       }
@@ -1378,29 +1272,52 @@
       }
       if (cleanNumber.startsWith('0')) cleanNumber = cleanNumber.substring(1);
 
-      const p = getProduct(currentProductKey);
-      const total = p.price * parseInt(quantity);
+      let message = '🛍️ *New Order from The Greenhouse*%0A%0A';
+      
+      if (orderMode === 'buyNow') {
+        const key = orderModal.dataset.productKey;
+        const p = getProduct(key);
+        message += 
+          '📦 *Product:* ' + encodeURIComponent(p.fullName) + '%0A' +
+          '💰 *Price:* ₹' + p.price + '%0A' +
+          '🔢 *Quantity:* 1%0A' +
+          '💵 *Total:* ₹' + p.price + '%0A%0A';
+      } else {
+        message += '🛒 *Cart Order*%0A';
+        let total = 0;
+        cart.forEach(item => {
+          const subtotal = item.price * item.qty;
+          total += subtotal;
+          message += `- ${encodeURIComponent(item.name)} x${item.qty} = ₹${subtotal}%0A`;
+        });
+        message += '%0A💵 *Total Amount:* ₹' + total + '%0A%0A';
+      }
 
-      const message =
-        '🛍️ *New Order from The Greenhouse*%0A%0A' +
-        '📦 *Product:* ' + encodeURIComponent(p.fullName) + '%0A' +
-        '💰 *Price:* ₹' + p.price + ' per pack%0A' +
-        '🔢 *Quantity:* ' + encodeURIComponent(quantity) + ' pack(s)%0A' +
-        '💵 *Total:* ₹' + total + '%0A%0A' +
+      message += 
         '👤 *Name:* ' + encodeURIComponent(name) + '%0A' +
         '📱 *Mobile:* ' + encodeURIComponent(mobile) + '%0A' +
         '📍 *Address:* ' + encodeURIComponent(address) + '%0A' +
-        '🎂 *Age:* ' + encodeURIComponent(age) + ' years%0A' +
-        '⚖️ *Weight:* ' + encodeURIComponent(weight) + ' kg%0A%0A' +
+        '🎂 *Age:* ' + encodeURIComponent(age) + ' years%0A%0A' +
         '✅ *Order placed via website*';
 
       window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank');
-      setTimeout(closeModal, 800);
+      
+      // Close modal and reset form
+      setTimeout(() => {
+        orderModal.classList.remove('active');
+        document.body.style.overflow = '';
+        orderForm.reset();
+        
+        // If it was a cart order, clear the cart
+        if (orderMode === 'cart') {
+          cart = [];
+          updateCartBadge();
+          renderCartUI();
+        }
+      }, 800);
     });
 
-    /* ═══════════════════════════════════════════════════════════
-       LANGUAGE MENU INTERACTION
-    ═══════════════════════════════════════════════════════════ */
+    // ─── LANGUAGE SWITCHER ───
     const langToggle = document.getElementById('langToggle');
     const langMenu = document.getElementById('langMenu');
     const langButtons = langMenu.querySelectorAll('button');
@@ -1413,17 +1330,47 @@
 
     document.addEventListener('click', () => langMenu.classList.remove('open'));
 
+    function setLanguage(lang) {
+      if (!uiTranslations[lang]) lang = 'en';
+      currentLang = lang;
+      localStorage.setItem('greenhouse-lang', lang);
+
+      // Update static UI text
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const val = t(key);
+        if (el.children.length === 0) {
+          el.textContent = val;
+        }
+      });
+
+      // Update placeholders
+      const usernameInput = document.getElementById('username');
+      const mobileInput = document.getElementById('mobile');
+      const addressInput = document.getElementById('address');
+      const ageInput = document.getElementById('age');
+      if (usernameInput) usernameInput.placeholder = t('placeholderName');
+      if (mobileInput) mobileInput.placeholder = t('placeholderMobile');
+      if (addressInput) addressInput.placeholder = t('placeholderAddress');
+      if (ageInput) ageInput.placeholder = t('placeholderAge');
+
+      // Re-render dynamic content
+      setProduct(currentProductKey);
+      renderSlider();
+      
+      // Update active menu
+      langButtons.forEach(b => b.classList.toggle('active-lang', b.dataset.lang === lang));
+      currentLangLabel.textContent = lang.toUpperCase();
+    }
+
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        setLanguage(lang);
+        setLanguage(btn.dataset.lang);
         langMenu.classList.remove('open');
       });
     });
 
-    /* ═══════════════════════════════════════════════════════════
-       NAVBAR / HAMBURGER
-    ═══════════════════════════════════════════════════════════ */
+    // ─── NAVBAR & ANIMATIONS ───
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
 
@@ -1444,9 +1391,6 @@
       navbar.classList.toggle('scrolled', window.pageYOffset > 60);
     });
 
-    /* ═══════════════════════════════════════════════════════════
-       INTERSECTION OBSERVER (animations)
-    ═══════════════════════════════════════════════════════════ */
     const observerOptions = { threshold: 0.10, rootMargin: '0px 0px -40px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1480,9 +1424,6 @@
       });
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       SMOOTH SCROLL
-    ═══════════════════════════════════════════════════════════ */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -1495,17 +1436,13 @@
       });
     });
 
-    /* ═══════════════════════════════════════════════════════════
-       INITIALISE — restore saved language
-    ═══════════════════════════════════════════════════════════ */
+    // ─── INIT ───
+    renderSlider();
     const savedLang = localStorage.getItem('greenhouse-lang') || 'en';
     setLanguage(savedLang);
-    goToSlide(0, false);
-    setProduct('weightLoss');
+    updateCartBadge();
     observeNewElements();
 
-    console.log('%c🌿 The Greenhouse Ayurvedic Company', 'font-size:18px; font-weight:bold; color:#1e3a2f;');
-    console.log('%cBringing Ayurveda Back to Life', 'font-size:14px; color:#c9a45b;');
   </script>
 
 </body>
